@@ -101,3 +101,7 @@ a:link:hover, a:visited:hover  {
     background-color: brown;
     border: solid;
 }
+
+#formLista{
+    margin-top: 50px;
+}

@@ -25,7 +25,7 @@ public class Conexion {
     private Conexion() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-            conn = DriverManager.getConnection(DBURL, "root", "Andy-0920");
+            conn = DriverManager.getConnection(DBURL, "root", "saslaw32");
 
         } catch (ClassNotFoundException
                 | SQLException
@@ -38,6 +38,7 @@ public class Conexion {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
         }
     }
+    
     public static synchronized Connection getConexion() {
         if (conexion == null) {
             conexion = new Conexion();
