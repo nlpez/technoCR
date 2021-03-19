@@ -46,7 +46,7 @@ h1 {
     z-index: 1; /* Se mantiene fijo en el top */
     top: 0; /* Fijo en top*/
     left: 0;
-    background-color: skyblue;
+    background-color: #8a3022;
     opacity: 95%; /*Transparenca del menu que de desplega*/
     font-weight: bold;
     overflow-x: hidden; /* Deshabilitar el scroll horizontal*/
@@ -54,6 +54,7 @@ h1 {
     transition: 0.5s; /* 0.5 segundos de efecto de transicion para deslizar el menu lateral*/
     border: 0.5px solid; /* Bordes*/
 }
+
 
 /* Para los links del side bar*/
 .sidenav a {
