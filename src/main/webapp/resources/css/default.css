@@ -16,14 +16,88 @@ h1 {
     color: #D20005;
 }
 
-a:link, a:visited {
-  color: #045491;
-  font-weight : bold;
-  text-decoration: none;
+/*Para el navbar TOP*/
+#Navtope {
+    background: #8a3022;
+    height: 100px; 
+    border-bottom: white; 
+    border-top: white; 
+    border-left: white;
+    border-right: white;
+    border-style: solid;
+    margin: -5px -4px;
 }
 
+/*Para el titulo del navbar*/
+#Titulo{
+    position: absolute;
+    margin-top: 3.1%;
+    margin-bottom: 100%;
+    margin-left: 0px;
+    color: white;
+    font-family: fantasy
+}
+
+/* Para el menu lateral */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - esto se cambia con JavaScript */
+    position: fixed; /* Se mantiene en el lugar */
+    z-index: 1; /* Se mantiene fijo en el top */
+    top: 0; /* Fijo en top*/
+    left: 0;
+    background-color: #8a3022;
+    opacity: 95%; /*Transparenca del menu que de desplega*/
+    font-weight: bold;
+    overflow-x: hidden; /* Deshabilitar el scroll horizontal*/
+    padding-top: 60px; /* Fija el contenido a 60px del top */
+    transition: 0.5s; /* 0.5 segundos de efecto de transicion para deslizar el menu lateral*/
+    border: 0.5px solid; /* Bordes*/
+}
+
+/* Para los links del side bar*/
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 23px;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+}
+
+/*Cambiar el color cuando el puntero se coloque sobre los links del side bar*/
+.sidenav a:hover {
+    color: #000000;
+    border: 1px solid;
+}
+
+/* Posicion y estilo para el boton de cerrado del side bar (esquina derecha superior) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    font-size: 40px;
+    /*margin-left: 50px;*/
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+/*Para el color y estilos de fuente en links*/
+a:link, a:visited {
+    color: white;
+    font-weight : bold;
+    text-decoration: none;
+}
+
+/*Estilo para cuando el puntero se situe sobre los links*/
 a:link:hover, a:visited:hover  {
-  color: #045491;
-  font-weight : bold;
-  text-decoration : underline;
+    color: #ffffff;
+    font-weight : bold;
+    text-decoration : none;
+    background-color: brown;
+    border: solid;
 }
