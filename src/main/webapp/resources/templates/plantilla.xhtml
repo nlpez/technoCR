@@ -15,11 +15,11 @@
     <h:body>
         <div id="top" class="top">
             <ui:insert name="top">
-             <b:navBar id="Navtope"
-                      fluid="true"
-                      >
-                <h1 id="Titulo">TechnoCR</h1>
-             </b:navBar>
+                <b:navBar id="Navtope"
+                          fluid="true"
+                          >
+                    <h1 id="Titulo">TechnoCR</h1>
+                </b:navBar>
             </ui:insert>
         </div>
         <div>
@@ -27,11 +27,14 @@
                 <ui:insert name="left">
                     <div id="sidenavBar" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn">&times;</a>
-                        <a href="#{request.contextPath}/faces/index.xhtml">Inicio</a>
-                        <a href="#{request.contextPath}/faces/">Lista de productos</a>
-                        <a href="#">Clientes</a>
-                        <a href="#">Contactenos</a>
-                        <a href="#">Empleados </a>
+                        <a href="#{request.contextPath}/faces/principal.xhtml">Inicio</a>
+                        <a href="#{request.contextPath}">Clientes</a>
+                        <a href="#{request.contextPath}">Empleados </a>
+                        <a href="#{request.contextPath}">Artículos</a>
+                        <a href="#{request.contextPath}">Proveedores</a>
+                        <a href="#{request.contextPath}">Inventario</a>
+                        <a href="#{request.contextPath}">Factura</a>
+                        <a href="#{request.contextPath}">Envios</a>
                     </div>
                     <span style="font-size:30px;cursor:pointer" id="open">&#9776; Menu</span>
                 </ui:insert>
