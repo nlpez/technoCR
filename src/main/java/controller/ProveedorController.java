@@ -25,6 +25,10 @@ public class ProveedorController extends Proveedor implements Serializable {
     public ProveedorController() {
     }
 
+    public String registroProveedor() {
+        return "registroProveedor.xhtml";
+    }
+
     public String insertProveedor() {
         if (ProveedorGestion.insertProveedor(this)) {
             return "listaProveedor.xhtml";
