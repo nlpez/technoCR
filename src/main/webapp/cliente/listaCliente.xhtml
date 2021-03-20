@@ -15,6 +15,13 @@
                 <h:form id="formLista">
                     <b:container fluid="true">
                         <b:panel title="Lista De Clientes" look="primary" collapsible="false">
+                            <b:commandButton value="Registrar un Cliente"
+                                             look="success"
+                                             action="#{clienteController.insertCliente()}"
+                                             class="commandButton__insertar"
+                                             >
+                            </b:commandButton>
+                           
                             <b:dataTable value="#{clienteController.clientes}"
                                          var="cliente"
                                          excel="true"
@@ -22,46 +29,56 @@
                                          pdf="true"
                                          columnVisibility="true"
                                          copy="true"
-                                         print="true">
+                                         print="true"
+                                         style="padding-top: 0px;">
                                 <b:dataTableColumn value="#{cliente.clienteId}" 
                                                    label="ID"
-                                                   width="9%"
+                                                   width="4%"
+                                                   class="form__column"
                                                    />
                                 <b:dataTableColumn value="#{cliente.cedula}" 
                                                    label="Cédula"
-                                                   width="15%"
+                                                   width="10%"
+                                                   class="form__column"
                                                    />
                                 <b:dataTableColumn value="#{cliente.nombreCliente}" 
                                                    label="Nombre"
-                                                   width="19%"
+                                                   width="10%"
+                                                   class="form__column"
                                                    />
                                 <b:dataTableColumn value="#{cliente.apellido1}" 
                                                    label="Primer Apellido"
-                                                   width="19%"
+                                                   width="10%"
+                                                   class="form__column"
                                                    />
                                 <b:dataTableColumn value="#{cliente.apellido2}" 
                                                    label="Segundo Apellido"
                                                    width="10%"
+                                                   class="form__column"
                                                    />
                                 <b:dataTableColumn value="#{cliente.telefono}" 
                                                    label="Teléfono"
                                                    width="10%"
+                                                   class="form__column"
                                                    />
                                 <b:dataTableColumn value="#{cliente.direccion}" 
                                                    label="Dirección"
                                                    width="8%"
+                                                   class="form__column"
                                                    />
                                 <b:dataTableColumn value="#{cliente.correo}" 
                                                    label="Correo"
                                                    width="8%"
+                                                   class="form__column"
                                                    />
                                 <b:dataTableColumn value="#{cliente.genero}" 
-                                                   label="Correo"
-                                                   width="8%"
+                                                   label="Genero"
+                                                   width="4%"
+                                                   class="form__column"
                                                    />
                                 <b:dataTableColumn style="text-align: center"
                                                    label="Acción"
-                                                   width="10%">
+                                                   width="5%">
                                     <b:commandButton value="Editar"
                                                      action="#{clienteController.editaCliente(cliente.clienteId)}"
                                                      />

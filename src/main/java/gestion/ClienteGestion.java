@@ -24,7 +24,7 @@ public class ClienteGestion {
     private static final String SQL_UPDATECLIENTE = "update cliente set cedula=?,nombreCliente=?,apellido1=?,apellido2=?,telefono=?,direccion=?,correo=?,genero=? where clienteId=?";
     private static final String SQL_DELETECLIENTE = "Delete FROM cliente where clienteId=?";
     private static final String SQL_GETCLIENTES = "SELECT * FROM cliente";
-    private static final String SQL_GETCLIENTE = "SELECT * FROM cliente clienteId=?";
+    private static final String SQL_GETCLIENTE = "SELECT * FROM cliente where clienteId=?";
 
     public static boolean insertCliente(Cliente cliente) {
         try {
