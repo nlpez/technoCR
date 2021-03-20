@@ -28,7 +28,9 @@ public class ClienteController extends Cliente implements Serializable {
     public ClienteController() {
     }
 
-
+    public String registroCliente(){
+        return "registroCliente.xhtml";
+    }
     public String insertCliente() {
         if (ClienteGestion.insertCliente(this)) {
             return "listaCliente.xhtml";
