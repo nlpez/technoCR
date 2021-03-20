@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <title>Lista de Clientes</title>
+    </h:head>
+
+    <body>
+        <ui:composition template="./../resources/templates/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form id="formLista">
+                    <b:container fluid="true">
+                        <b:panel title="Lista De Proveedores" look="primary" collapsible="false">
+                            <b:commandButton value="Registrar Proveedor"
+                                             look="success"
+                                             action="#{proveedorController.insertProveedor()}"
+                                             class="commandButton__insertar"
+                                             >
+                            </b:commandButton>
+
+                            <b:dataTable value="#{proveedorController.proveedor}"
+                                         var="proveedor"
+                                         excel="true"
+                                         csv="true"
+                                         pdf="true"
+                                         columnVisibility="true"
+                                         copy="true"
+                                         print="true"
+                                         style="padding-top: 0px;">
+                                <b:dataTableColumn value="#{proveedor.proveeid}" 
+                                                   label="ID"
+                                                   width="4%"
+                                                   class="form__column"
+                                                   />
+                                <b:dataTableColumn value="#{proveedor.cedulaJuridica}" 
+                                                   label="Cédula Jurídica"
+                                                   width="10%"
+                                                   class="form__column"
+                                                   />
+                                <b:dataTableColumn value="#{proveedor.nombre}" 
+                                                   label="Nombre"
+                                                   width="10%"
+                                                   class="form__column"
+                                                   />
+                                 <b:dataTableColumn value="#{proveedor.dirreccion}" 
+                                                   label="Dirección"
+                                                   width="8%"
+                                                   class="form__column"
+                                                   />
+                                <b:dataTableColumn value="#{proveedor.telefono}" 
+                                                   label="Teléfono"
+                                                   width="10%"
+                                                   class="form__column"
+                                                   />
+                                <b:dataTableColumn value="#{proveedor.correo}" 
+                                                   label="Correo"
+                                                   width="8%"
+                                                   class="form__column"
+                                                   />
+                                <b:dataTableColumn value="#{proveedor.fechaIngre}" 
+                                                   label="Fecha de Ingreso"
+                                                   width="4%"
+                                                   class="form__column"
+                                                   />
+                                <b:dataTableColumn style="text-align: center"
+                                                   label="Acción"
+                                                   width="5%">
+                                    <b:commandButton value="Editar"
+                                                     action="#{proveedorController.editaProveedor(proveedor.proveeid)}"
+                                                     />
+                                </b:dataTableColumn>
+                            </b:dataTable>
+                        </b:panel>
+                    </b:container>
+                </h:form> 
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

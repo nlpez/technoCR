@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+
+        <ui:composition template="./../resources/templates/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form id="editaProveedorForm">
+                    <b:container fluid="true">
+                        <b:panel title="Editar Proveedor" look="info" collapsible="false">                  
+                            <b:row tooltip="ATENCIÓN: El ID no es modificable">
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="ID" for="proveeid"/>
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="ID" id="proveeid"
+                                                 value="#{proveedorController.proveeid}"
+                                                 readonly="true"
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="ID"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Cédula Juridica" for="cedulaJuridica" />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Cédula Juridica" id="cedulaJuridica" required="true"
+                                                 value="#{proveedorController.cedulaJuridica}"
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="cedulaJuridica"/>
+                                </b:column>
+                            </b:row>
+                            <b:row tooltip="ATENCIÓN: No se puede ingresar un nombre ya registrado">
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Nombre" />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Nombre" id="nombre" required="true"
+                                                 value="#{proveedorController.nombre}"
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="nombre"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Dirección" />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Dirección" id="direccion" required="true"
+                                                 value="#{proveedorController.dirreccion}"
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="direccion"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Teléfono" />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Teléfono" id="telefono" required="true"
+                                                 value="#{proveedorController.telefono}"
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="telefono"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputText value="Correo" />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Correo" id="correo" required="true"
+                                                 value="#{proveedorController.correo}"
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="correo"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Fecha de Ingreso" for="fechaIngre"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:datepicker id="fechaIngre"
+                                                  required="true"
+                                                  value="#{proveedorController.fechaIngre}"
+                                        />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="fechaIngre"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2"/>
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Modificar"
+                                                     look="info"                                                    
+                                                     class="commandButton__editar"
+                                                     action="#{proveedorController.updateProveedor()}"
+                                                     >
+                                    </b:commandButton>
+                                    <b:commandButton value="Eliminar"
+                                                     look="danger"
+                                                     action="#{proveedorController.deleteProveedor()}"
+                                                     class="commandButton__editar"
+                                                     >
+                                    </b:commandButton>
+                                </b:column>                                
+                            </b:row>
+                        </b:panel> 
+                    </b:container>
+                </h:form>   
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -2,29 +2,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
 
     <h:body>
+
         <ui:composition template="./../resources/templates/plantilla.xhtml">
 
             <ui:define name="content">
-                <h:form id="registroClienteForm">
+                <h:form id="registroProveedorForm">
                     <b:container fluid="true">
-                        <b:panel title="Registrar Cliente" look="success" collapsible="false">
-                            <b:row>
+                        <b:panel title="Registrar Proveedor" look="success" collapsible="false">
+                            <b:row   tooltip="ATENCIÓN: No se puede ingresar una cedula Juridica ya registrada">
                                 <b:column medium-screen="2">
-                                    <h:outputLabel value="Cedula" for="cedula"/>
+                                    <h:outputLabel value="Cedula Jurídica" for="cedulaJuridica"/>
                                 </b:column>
                                 <b:column medium-screen="2">
-                                    <b:inputText placeholder="999999999"
+                                    <b:inputText placeholder="9999999999"
                                                  required="true"
                                                  mask="9999999999"
-                                                 id="cedula"
-                                                 value="#{clienteController.cedula}"/>
+                                                 id="cedulaJuridica"
+                                                 value="#{proveedorController.cedulaJuridica}"/>
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
-                                    <b:message for="cedula"/>
+                                    <b:message for="cedulaJuridica"/>
                                 </b:column>
                             </b:row>
                             <b:row>
@@ -34,53 +35,11 @@
                                 <b:column medium-screen="2">
                                     <b:inputText placeholder="Nombre"
                                                  required="true"                                                 
-                                                 id="nombreCliente"
-                                                 value="#{clienteController.nombreCliente}"/>
+                                                 id="nombre"
+                                                 value="#{proveedorController.nombre}"/>
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
-                                    <b:message for="nombreCliente"/>
-                                </b:column>
-                            </b:row>
-                            <b:row>
-                                <b:column medium-screen="2">
-                                    <h:outputLabel value="Primer Apellido" for="apellido1"/>
-                                </b:column>
-                                <b:column medium-screen="2">
-                                    <b:inputText placeholder="Primer Apellido"
-                                                 required="true"                                                 
-                                                 id="apellido1"
-                                                 value="#{clienteController.apellido1}"/>
-                                </b:column>
-                                <b:column medium-screen="6" style-class="message">
-                                    <b:message for="apellido1"/>
-                                </b:column>
-                            </b:row>
-                            <b:row>
-                                <b:column medium-screen="2">
-                                    <h:outputLabel value="Segundo Apellido" for="apellido2"/>
-                                </b:column>
-                                <b:column medium-screen="2">
-                                    <b:inputText placeholder="Segundo Apellido"
-                                                 required="true"                                                 
-                                                 id="apellido2"
-                                                 value="#{clienteController.apellido2}"/>
-                                </b:column>
-                                <b:column medium-screen="6" style-class="message">
-                                    <b:message for="apellido2"/>
-                                </b:column>
-                            </b:row>
-                            <b:row>
-                                <b:column medium-screen="2">
-                                    <h:outputLabel value="Teléfono" for="telefono"/>
-                                </b:column>
-                                <b:column medium-screen="2">
-                                    <b:inputText placeholder="Teléfono"
-                                                 required="true"                                                 
-                                                 id="telefono"
-                                                 value="#{clienteController.telefono}"/>
-                                </b:column>
-                                <b:column medium-screen="6" style-class="message">
-                                    <b:message for="telefono"/>
+                                    <b:message for="nombre"/>
                                 </b:column>
                             </b:row>
                             <b:row>
@@ -91,10 +50,24 @@
                                     <b:inputText placeholder="Dirección"
                                                  required="true"                                                 
                                                  id="direccion"
-                                                 value="#{clienteController.direccion}"/>
+                                                 value="#{proveedorController.dirreccion}"/>
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
                                     <b:message for="direccion"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Teléfono" for="telefono"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:inputText placeholder="Teléfono"
+                                                 required="true"                                                 
+                                                 id="telefono"
+                                                 value="#{proveedorController.telefono}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="telefono"/>
                                 </b:column>
                             </b:row>
                             <b:row>
@@ -106,7 +79,7 @@
                                                  required="true"  
                                                  mask="email"
                                                  id="correo"
-                                                 value="#{clienteController.correo}"/>
+                                                 value="#{proveedorController.correo}"/>
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
                                     <b:message for="correo"/>
@@ -114,18 +87,16 @@
                             </b:row>
                             <b:row>
                                 <b:column medium-screen="2">
-                                    <h:outputLabel value="Genero" for="genero"/>
+                                    <h:outputLabel value="Fecha de Ingreso" for="fechaIngre"/>
                                 </b:column>
                                 <b:column medium-screen="2">
-                                    <b:panelGrid columns="2">
-                                        <b:radiobutton value="#{clienteController.genero}"
-                                                       itemLabel="Masculino" itemValue="M"/>
-                                        <b:radiobutton value="#{clienteController.genero}"
-                                                       itemLabel="Femenino" itemValue="F"/>
-                                    </b:panelGrid>
+                                    <b:datepicker id="fechaIngre"
+                                                  required="true"
+                                                  value="#{proveedorController.fechaIngre}"
+                                                  />
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
-                                    <b:message for="genero"/>
+                                    <b:message for="fechaIngre"/>
                                 </b:column>
                             </b:row>
                             <b:row>
@@ -134,7 +105,7 @@
                                 </b:column>
                                 <b:column medium-screen="2">
                                     <b:commandButton value="Registrar"
-                                                     action="#{clienteController.insertCliente()}"
+                                                     action="#{proveedorController.insertProveedor()}"
                                                      look="success"
                                                      style="width: 100%; 
                                                      margin-left: -124px !important;
