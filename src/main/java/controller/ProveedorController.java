@@ -36,7 +36,7 @@ public class ProveedorController extends Proveedor implements Serializable {
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al insertar el proveedor");
-            FacesContext.getCurrentInstance().addMessage("registroProveedorForm:ID", message);
+            FacesContext.getCurrentInstance().addMessage("registroProveedorForm:cedulaJuridica", message);
             return "registroProveedor.xhtml";
         }
     }
@@ -48,7 +48,7 @@ public class ProveedorController extends Proveedor implements Serializable {
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al actualizar al proveedor");
-            FacesContext.getCurrentInstance().addMessage("editaProveedorForm:ID", message);
+            FacesContext.getCurrentInstance().addMessage("editaProveedorForm:cedulaJuridica", message);
             return "editaProveedor.xhtml";
         }
     }
@@ -59,7 +59,7 @@ public class ProveedorController extends Proveedor implements Serializable {
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al eliminar al proveedor");
-            FacesContext.getCurrentInstance().addMessage("editaProveedorForm:ID", message);
+            FacesContext.getCurrentInstance().addMessage("editaProveedorForm:cedulaJuridica", message);
             return "editaProveedor.xhtml";
         }
     }
@@ -83,7 +83,7 @@ public class ProveedorController extends Proveedor implements Serializable {
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "El registro del proveedor seleccionado no existe");
-            FacesContext.getCurrentInstance().addMessage("editaProveedorForm:ID", message);
+            FacesContext.getCurrentInstance().addMessage("editaProveedorForm:cedulaJuridica", message);
             return "listaProveedor.xhtml";
         }
     }

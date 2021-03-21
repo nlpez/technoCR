@@ -38,7 +38,7 @@ public class ClienteController extends Cliente implements Serializable {
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al insertar el cliente");
-            FacesContext.getCurrentInstance().addMessage("registroClienteForm:ID", message);
+            FacesContext.getCurrentInstance().addMessage("registroClienteForm:cedula", message);
             return "registroCliente.xhtml";
         }
     }
@@ -49,7 +49,7 @@ public class ClienteController extends Cliente implements Serializable {
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al actualizar el cliente");
-            FacesContext.getCurrentInstance().addMessage("editaClienteForm:ID", message);
+            FacesContext.getCurrentInstance().addMessage("editaClienteForm:cedula", message);
             return "editaCliente.xhtml";
         }
     }
@@ -60,7 +60,7 @@ public class ClienteController extends Cliente implements Serializable {
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al eliminar el cliente");
-            FacesContext.getCurrentInstance().addMessage("editaClienteForm:ID", message);
+            FacesContext.getCurrentInstance().addMessage("editaClienteForm:cedula", message);
             return "editaCliente.xhtml";
         }
     }
@@ -85,7 +85,7 @@ public class ClienteController extends Cliente implements Serializable {
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "El registro del cliente seleccionado no existe");
-            FacesContext.getCurrentInstance().addMessage("editaClienteForm:ID", message);
+            FacesContext.getCurrentInstance().addMessage("editaClienteForm:cedula", message);
             return "listaCliente.xhtml";
         }
     }
