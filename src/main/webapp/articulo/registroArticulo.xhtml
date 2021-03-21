@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../resources/templates/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form id="editaArticuloForm">
+                    <b:container fluid="true">
+                        <b:panel title="Editar Articulo" look="info" collapsible="false">
+                            <b:row tooltip="El ID del articulo no debe de estar registrado">
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="ID" for="articuloid"/>
+                                </b:column>
+                                <b:column>
+                                    <b:inputText placeholder="ID" id="articuloid"
+                                                 value="#{articuloController.articuloid}"
+
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="ID"/>
+                                </b:column>
+                            </b:row>
+                            <b:row >
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Marca" for="marca"/>
+                                </b:column>
+                                <b:column>
+                                    <b:inputText placeholder="Marca" id="Marca"
+                                                 value="#{articuloController.marca}"
+
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="marca"/>
+                                </b:column>
+                            </b:row>
+                            <b:row >
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Nombre" for="nombre"/>
+                                </b:column>
+                                <b:column>
+                                    <b:inputText placeholder="Nombre" id="Nombre"
+                                                 value="#{articuloController.nombre}"
+
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="nombre"/>
+                                </b:column>
+                            </b:row>
+                            <b:row >
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Descripcion" for="descripcion"/>
+                                </b:column>
+                                <b:column>
+                                    <b:inputText placeholder="Marca" id="Descripcion"
+                                                 value="#{articuloController.descripcion}"
+
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="descripcion"/>
+                                </b:column>
+                            </b:row>
+                            <b:row >
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Codigo del articulo" for="codigoArticulo"/>
+                                </b:column>
+                                <b:column>
+                                    <b:inputText placeholder="Codigo" id="Codigo"
+                                                 value="#{articuloController.codigoArticulo}"
+
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="codigoArticulo"/>
+                                </b:column>
+                            </b:row>
+                            <b:row >
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Precio" for="precio"/>
+                                </b:column>
+                                <b:column>
+                                    <b:inputText placeholder="Precio" id="precio"
+                                                 value="#{articuloController.precio}"
+
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="precio"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2"/>
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Insertar"
+                                                     look="info"
+                                                     class="commandButton__editar"
+                                                     action="#{articuloController.insertArticulo()}">
+                                    </b:commandButton>
+
+                                </b:column>
+
+
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

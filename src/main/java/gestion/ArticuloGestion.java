@@ -14,11 +14,10 @@ import net.bootsfaces.render.A;
 public class ArticuloGestion {
 
     private static final String SQL_INSERTARTICULO = "insert into articulo(articuloid,marca,nombre,descripcion,codigoArticulo,precio) values (?,?,?,?,?,?)";
-    private static final String SQL_UPDATEARTICULO = "update articulo set articuloid=?,marca=?,nombre=?,descripcion=?,codigoArticulo=?,precio=? where articuloid=?";
+    private static final String SQL_UPDATEARTICULO = "update articulo set marca=?,nombre=?,descripcion=?,codigoArticulo=?,precio=? where articuloid=?";
     private static final String SQL_DELETEARTICULO = "Delete FROM articulo where articuloid=?";
-    private static final String SQL_GETARTICULOS = "SELECT * FROM articulo";
-    private static final String SQL_GETARTICULO = "SELECT * FROM articulo where articuloid=?";
-    
+    private static final String SQL_GETARTICULOS = "SELECT articuloid, marca, nombre, descripcion, codigoArticulo, precio FROM articulo";
+    private static final String SQL_GETARTICULO = "SELECT articuloid, marca, nombre, descripcion, codigoArticulo, precio FROM articulo where articuloid=?";
 
     public static boolean insertArticulo(Articulo articulo) {
         try {
