@@ -27,11 +27,94 @@
                                     <b:message for="ID"/>
                                 </b:column>
                             </b:row>
+                            <b:row >
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Marca" for="marca"/>
+                                </b:column>
+                                <b:column>
+                                    <b:inputText placeholder="Marca" id="Marca"
+                                                 value="#{articuloController.marca}"
+
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="marca"/>
+                                </b:column>
+                            </b:row>
+                            <b:row >
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Nombre" for="nombre"/>
+                                </b:column>
+                                <b:column>
+                                    <b:inputText placeholder="Marca" id="Nombre"
+                                                 value="#{articuloController.nombre}"
+
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="nombre"/>
+                                </b:column>
+                            </b:row>
+                            <b:row >
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Descripcion" for="descripcion"/>
+                                </b:column>
+                                <b:column>
+                                    <b:inputText placeholder="Marca" id="Descripcion"
+                                                 value="#{articuloController.descripcion}"
+
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="descripcion"/>
+                                </b:column>
+                            </b:row>
+                            <b:row >
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Codigo del articulo" for="codigoArticulo"/>
+                                </b:column>
+                                <b:column>
+                                    <b:inputText placeholder="Codigo" id="Codigo"
+                                                 value="#{articuloController.codigoArticulo}"
+
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="codigoArticulo"/>
+                                </b:column>
+                            </b:row>
+                            <b:row >
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Precio" for="precio"/>
+                                </b:column>
+                                <b:column>
+                                    <b:inputText placeholder="Precio" id="precio"
+                                                 value="#{articuloController.precio}"
+
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="precio"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2"/>
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Actualizar"
+                                                     look="info"
+                                                     class="commandButton__editar"
+                                                     action="#{articuloController.updateArticulo()}">
+                                    </b:commandButton>
+                                    <b:commandButton value="Eliminar"
+                                                     look="danger"
+                                                     class="commandButton__editar"
+                                                     action="#{articuloController.deleteArticulo()}">
+
+                                    </b:commandButton>
+                                </b:column>
 
 
-
-
-
+                            </b:row>
                         </b:panel>
                     </b:container>
                 </h:form>
