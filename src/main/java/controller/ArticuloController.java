@@ -28,6 +28,10 @@ public class ArticuloController extends Articulo implements Serializable {
     public ArticuloController() {
     }
 
+    public String registrarArticulo() {
+        return "registroArticulo.xhtml";
+    }
+
     public String insertArticulo() {
         if (ArticuloGestion.insertArticulo(this)) {
             return "listaArticulo.xhtml";

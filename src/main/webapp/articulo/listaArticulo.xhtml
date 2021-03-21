@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:body>
+
+        <ui:composition template="./../resources/templates/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form id="formLista">
+                    <b:container fluid="true">
+                        <b:panel title="Lista de productos" look="primary" collapsible="false">
+                            <b:commandButton value="Ingresar producto"
+                                             look="succes"
+                                             action="#{articuloController.registrarArticulo()}"
+                                             class="commandButton__insertar">
+                            </b:commandButton>
+                            <b:dataTable value="#{articuloController.articulos}"
+                                         var="articulo"
+                                         excel="true"
+                                         pdf="true"
+                                         columnVisibility="true"
+                                         copy="true"
+                                         print="true"
+                                         style="padding-top: 0px;">
+                                <b:dataTableColumn value="#{articulo.articuloid}"
+                                                   label="ID"
+                                                   width="4%"
+
+                                                   />
+                                <b:dataTableColumn value="#{articulo.marca}"
+                                                   label="Marca"
+                                                   width="6%"
+
+                                                   />
+                                <b:dataTableColumn value="#{articulo.nombre}"
+                                                   label="Nombre"
+                                                   width="6%"
+
+                                                   />
+                                <b:dataTableColumn value="#{articulo.descripcion}"
+                                                   label="Descripcion"
+                                                   width="10%"
+
+                                                   />
+                                <b:dataTableColumn value="#{articulo.codigoArticulo}"
+                                                   label="Codigo del articulo"
+                                                   width="10%"
+
+                                                   />
+                                <b:dataTableColumn value="#{articulo.precio}"
+                                                   label="Precio"
+                                                   width="4%"
+
+                                                   />
+                                <b:dataTableColumn style="text-align: center"
+                                                   label="Acción"
+                                                   width="5%">
+                                    <b:commandButton value="Editar"
+                                                     action="#{articuloController.editaArticulo(articulo.articuloid)}"
+                                                     />
+                                </b:dataTableColumn>
+
+                            </b:dataTable>
+                        </b:panel>
+                    </b:container>
+
+
+
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>
