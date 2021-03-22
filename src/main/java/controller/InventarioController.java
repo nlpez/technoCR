@@ -28,37 +28,39 @@ public class InventarioController extends Inventario implements Serializable {
      */
     public InventarioController() {
     }
-
+  public String registroCliente(){
+        return "registroInventario";
+    }
     public String insertInventario() {
         if (InventarioGestion.insertInventario(this)) {
-            return ".xhtml";
+            return "listaInventario.xhtml";
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al insertar el inventario");
             FacesContext.getCurrentInstance().addMessage("*:ID", message);
-            return ".xhtml";
+               return "registroInventario.xhtml";
         }
     }
 
     public String updateinventario() {
         if (InventarioGestion.updateInventario(this)) {
-            return "";
+           return "listaInventario.xhtml";
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al actualizar el inventario");
             FacesContext.getCurrentInstance().addMessage("*:ID", message);
-            return ".xhtml";
+             return "editaInventario.xhtml";
         }
     }
 
     public String deleteInventario() {
         if (InventarioGestion.deleteInventario(this)) {
-            return "";
+           return "listaInventario.xhtml";
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al eliminar el inventario");
             FacesContext.getCurrentInstance().addMessage("*:ID", message);
-            return ".xhtml";
+            return "editaInventario.xhtml";
         }
     }
 
@@ -66,20 +68,20 @@ public class InventarioController extends Inventario implements Serializable {
         return InventarioGestion.getInventarios();
     }
 
-    public String editaCliente(int inventarioid) {
+    public String editaInventario(int inventarioid) {
         Inventario inventario = InventarioGestion.getInventario(inventarioid);
         if (inventario != null) {
             this.setProveeid(inventario.getInventarioid());
             this.setCodigoArticulo(inventario.getCodigoArticulo());
             this.setCantidadStock(inventario.getCantidadStock());
             this.setProveeid(inventario.getProveeid());
-            return ".xhtml";
+            return "editaInventario.xhtml";
 
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al eliminar el inventario");
             FacesContext.getCurrentInstance().addMessage("*:ID", message);
-            return ".xhtml";
+            return "listaInventario.xhtml";
         }
     }
 
