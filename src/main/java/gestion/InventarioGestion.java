@@ -20,28 +20,23 @@ import model.Inventario;
  */
 public class InventarioGestion {
 
-    private static final String SQL_INSERTARTICULO = "INSERT into inventario"
-            + "(inventarioid,codigoArticulo,cantidadStock,proveeid) "
-            + "values (?,?,?,?)";
+    private static final String SQL_INSERTARTICULO = "insert into inventario(codigoArticulo,cantidadStock,proveeid) values (?,?,?)";
 
-    private static final String SQL_UPDATEINVENTARIO = "UPDATE inventario set "
-            + "codiigoArticulo=?, cantidadStock=?, proveeid=? where inventarioid = ?";
+    private static final String SQL_UPDATEINVENTARIO = "UPDATE inventario set codigoArticulo=?, cantidadStock=?, proveeid=? where inventarioid = ?";
 
-    private static final String SQL_DELETEINVENTARIO = "DELETE from inventario "
-            + "where inventarioid=?";
+    private static final String SQL_DELETEINVENTARIO = "DELETE from inventario where inventarioid=?";
 
     private static final String SQL_GETINVENTARIOS = "SELECT * FROM inventario";
 
-    private static final String SQL_GETINVENTARIO = "SELECT * FROM inventario "
-            + "where inventarioid=?";
+    private static final String SQL_GETINVENTARIO = "SELECT * FROM inventario where inventarioid=?";
 
     public static boolean insertInventario(Inventario inventario) {
         try {
             PreparedStatement sentence = Conexion.getConexion().prepareStatement(SQL_INSERTARTICULO);
-            sentence.setInt(1, inventario.getInventarioid());
-            sentence.setString(2, inventario.getCodigoArticulo());
-            sentence.setInt(3, inventario.getCantidadStock());
-            sentence.setInt(4, inventario.getProveeid());
+  
+            sentence.setString(1, inventario.getCodigoArticulo());
+            sentence.setInt(2, inventario.getCantidadStock());
+            sentence.setInt(3, inventario.getProveeid());
 
             return sentence.executeUpdate() > 0;
 
@@ -98,7 +93,7 @@ public class InventarioGestion {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteGestion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InventarioGestion.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lista;
     }
@@ -118,7 +113,7 @@ public class InventarioGestion {
                 );
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteGestion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InventarioGestion.class.getName()).log(Level.SEVERE, null, ex);
         }
         return invetario;
     }

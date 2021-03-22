@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import model.Inventario;
@@ -20,7 +21,7 @@ import model.Inventario;
  * @author theai
  */
 @Named(value = "inventarioController")
-@Dependent
+@SessionScoped
 public class InventarioController extends Inventario implements Serializable {
 
     /**
@@ -28,8 +29,8 @@ public class InventarioController extends Inventario implements Serializable {
      */
     public InventarioController() {
     }
-  public String registroCliente(){
-        return "registroInventario";
+  public String registroInventario(){
+        return "registroInventario.xhtml";
     }
     public String insertInventario() {
         if (InventarioGestion.insertInventario(this)) {
@@ -37,7 +38,7 @@ public class InventarioController extends Inventario implements Serializable {
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al insertar el inventario");
-            FacesContext.getCurrentInstance().addMessage("*:ID", message);
+            FacesContext.getCurrentInstance().addMessage("registroInventarioForm:codigoArticulo", message);
                return "registroInventario.xhtml";
         }
     }
@@ -48,7 +49,7 @@ public class InventarioController extends Inventario implements Serializable {
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al actualizar el inventario");
-            FacesContext.getCurrentInstance().addMessage("*:ID", message);
+            FacesContext.getCurrentInstance().addMessage("editaInventarioForm:codigoArticulo", message);
              return "editaInventario.xhtml";
         }
     }
@@ -59,7 +60,7 @@ public class InventarioController extends Inventario implements Serializable {
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al eliminar el inventario");
-            FacesContext.getCurrentInstance().addMessage("*:ID", message);
+            FacesContext.getCurrentInstance().addMessage("editaInventarioForm:codigoArticulo", message);
             return "editaInventario.xhtml";
         }
     }
@@ -71,7 +72,7 @@ public class InventarioController extends Inventario implements Serializable {
     public String editaInventario(int inventarioid) {
         Inventario inventario = InventarioGestion.getInventario(inventarioid);
         if (inventario != null) {
-            this.setProveeid(inventario.getInventarioid());
+            this.setInventarioid(inventario.getInventarioid());
             this.setCodigoArticulo(inventario.getCodigoArticulo());
             this.setCantidadStock(inventario.getCantidadStock());
             this.setProveeid(inventario.getProveeid());
@@ -80,7 +81,7 @@ public class InventarioController extends Inventario implements Serializable {
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al eliminar el inventario");
-            FacesContext.getCurrentInstance().addMessage("*:ID", message);
+            FacesContext.getCurrentInstance().addMessage("editaInventarioForm:codigoArticulo", message);
             return "listaInventario.xhtml";
         }
     }

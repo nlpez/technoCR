@@ -10,23 +10,22 @@
     <h:body>
         <ui:composition template="./../resources/templates/plantilla.xhtml">
             <ui:define name="content">
-                <h:form id="editaInventaroForm">
+                <h:form id="editaInventarioForm">
                     <b:container fluid="true">
                          <b:panel title="Editar Inventario" look="info" collapsible="false">  
                         <b:row tooltip="ATENCIÓN: El ID no es modificable">
+                         
                             <b:column medium-screen="2">
-                                <h:outputLabel value="ID" for="inventarioid"/>
-
+                                <h:outputLabel value="ID" for="inventarioid" />
                             </b:column>
                             <b:column medium-screen="4">
-                                 <b:inputText placeholder="ID" id="inventarioid"
+                                 <b:inputText placeholder="Inventario ID" id="inventarioid" required="true"
                                               value="#{inventarioController.inventarioid}"
-                                                 readonly="true"
-                                                 />
+                                              readonly="true"/>
                             </b:column>
                             <b:column medium-screen="6" style-class="message">
-                               <b:message for="ID"/> 
-                            </b:column>
+                                    <b:message for="inventarioid"/>
+                                </b:column>
                         </b:row>
                         <b:row>
                             <b:column medium-screen="2">
