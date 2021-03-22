@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Lista Inventario</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./../resources/templates/plantilla.xhtml">
+              <ui:define name="content">
+                  <h:form id="formLista">
+                      <b:container fluid="true">
+                          <b:panel title="Lista De Clientes" look="primary" collapsible="false">
+                               <b:commandButton value="Registrar en Inventario"
+                                             look="success"
+                                             action="#{inventarioController.insertInventario()}"
+                                             class="commandButton__insertar"
+                                             >
+                            </b:commandButton>
+                              <b:dataTable value="#{inventarioController.inventarios}"
+                                         var="inventario"
+                                         excel="true"
+                                         csv="true"
+                                         pdf="true"
+                                         columnVisibility="true"
+                                         copy="true"
+                                         print="true"
+                                         style="padding-top: 0px;">
+                                 
+                                  
+                                <b:dataTableColumn value="#{inventario.inventarioid}" 
+                                                   label="ID"
+                                                   width="4%"
+                                                   class="form__column"
+                                                   />
+                                   
+                                <b:dataTableColumn value="#{inventario.codigoArticulo}" 
+                                                   label="Codigo Articulo"
+                                                   width="4%"
+                                                   class="form__column"
+                                                   />
+                                   
+                                <b:dataTableColumn value="#{inventario.cantidadStock}" 
+                                                   label="Cantidad de Stock"
+                                                   width="4%"
+                                                   class="form__column"
+                                                   />
+                                   
+                                <b:dataTableColumn value="#{inventario.proveeid}" 
+                                                   label="Id del Proveedor"
+                                                   width="4%"
+                                                   class="form__column"
+                                                   />
+                                  <b:dataTableColumn style="text-align: center"
+                                                   label="Acción"
+                                                   width="5%">
+                                    <b:commandButton value="Editar"
+                                                     
+                                                     action="#{inventarioController.editaInventario(inventario.inventarioid)}"
+                                                     />
+                                </b:dataTableColumn>
+                              </b:dataTable>
+                          </b:panel>
+                      </b:container>
+                  </h:form>
+              </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

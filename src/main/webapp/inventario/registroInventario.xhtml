@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+   
+    <h:body>
+        <ui:composition template="./../resources/templates/plantilla.xhtml">
+              <ui:define name="content">
+            <h:form id="registroInventarioForm">
+                <b:container fluid="true">
+                    <b:panel title="Registrar Inventario" look="success" collapsible="false">
+                           <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputLabel value="ID" for="inventarioid"/>
+                            </b:column>
+                            <b:column medium-screen="2">
+                                <b:inputText placeholder="20"
+                                             required="true"      
+                                             id="inventarioid"
+                                             value="#{inventarioController.inventarioid}"/>
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="inventarioid"/>
+                            </b:column>
+
+                        </b:row> 
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputLabel value="Codigo Articulo" for="codigoArticulo"/>
+                            </b:column>
+                            <b:column medium-screen="2">
+                                <b:inputText placeholder="ABC123"
+                                             required="true"
+                                             
+                                             id="codigoArticulo"
+                                             value="#{inventarioController.codigoArticulo}"/>
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="codigoArticulo"/>
+                            </b:column>
+
+                        </b:row>  
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputLabel value="Cantidad de Stock" for="cantidadStock"/>
+                            </b:column>
+                            <b:column medium-screen="2">
+                                <b:inputText placeholder="Cantidad"
+                                             required="true"                                                 
+                                             id="cantidadStock"
+                                             value="#{inventarioController.cantidadStock}"/>
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="cantidadStock"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputLabel value="ID de Proveedor" for="proveeid"/>
+                            </b:column>
+                            <b:column medium-screen="2">
+                                <b:inputText placeholder="ID de Proveedor"
+                                             required="true"                                                 
+                                             id="proveeid"
+                                             value="#{inventarioController.proveeid}"/>
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="proveeid"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column medium-screen="3">
+
+                            </b:column>
+                            <b:column medium-screen="2">
+                                <b:commandButton value="Registrar"
+                                                 action="#{inventarioController.insertInventario()}"
+                                                 look="success"
+                                                 style="width: 100%; 
+                                                 margin-left: -124px !important;
+                                                 margin-top: 20px;"/>
+                            </b:column>
+                        </b:row>
+                    </b:panel>
+                </b:container>
+            </h:form>
+              </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
