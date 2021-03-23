@@ -10,15 +10,15 @@
         <ui:composition template="./../resources/templates/plantilla.xhtml">
 
             <ui:define name="content">
-                <h:form id="registroEmpleados">
+                <h:form id="registroEmpleadosForm">
                     <b:container fluid="true">
-                        <b:panel title="Editar Empleados" look="info" collapsible="false">                
+                        <b:panel title="Agregar Empleados" look="info" collapsible="false">                
                             <b:row tooltip="ATENCIÓN: El ID lo asigna el sistema">
                                 <b:column medium-screen="2">
-                                    <h:outputLabel value="ID" for="idEmpleado"/>
+                                    <h:outputLabel value="IdEmpleado" for="idEmpleado"/>
                                 </b:column>
                                 <b:column medium-screen="4">
-                                    <b:inputText placeholder="ID" id="idEmpleado"
+                                    <b:inputText placeholder="IdEmpleado" id="idEmpleado"
                                                  value="#{empleadoController.idEmpleado}"
                                                  readonly="true"
                                                  />
@@ -110,7 +110,7 @@
                                     <h:outputLabel value="Salario" for="sueldo"/>
                                 </b:column>
                                 <b:column medium-screen="4">
-                                    <b:inputText placeholder="Puesto" id="sueldo" required="true"
+                                    <b:inputText placeholder="Salario" id="sueldo" required="true"
                                                  value="#{empleadoController.sueldo}"
                                                  />
                                 </b:column>
@@ -151,7 +151,7 @@
                                     <b:commandButton value="Registrar al empleado"
                                                      look="success"                                                    
                                                      class="commandButton__editar"
-                                                     action="#{clienteController.updateCliente()}"
+                                                     action="#{empleadoController.insertaEmpleado()}"
                                                      />
                                 </b:column>
                             </b:row>

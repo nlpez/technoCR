@@ -35,30 +35,30 @@ public class EmpleadoController extends Empleado implements Serializable {
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "No se pudo insertar el nuevo registro");
-            FacesContext.getCurrentInstance().addMessage("registroEmpleados:idEmpleado", message);
-            return "listaEmpleado.xhtml";
+            FacesContext.getCurrentInstance().addMessage("registroEmpleadosForm:cedula", message);
+            return "registroEmpleado.xhtml";
         }
     } 
     
     public String actualizaEmpleado() {
-        if (EmpleadoGestion.insertaEmpleado(this)) {
+        if (EmpleadoGestion.actualizaEmpleado(this)) {
             return "listaEmpleado.xhtml";
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "No se pudo actualizar el registro");
             FacesContext.getCurrentInstance().addMessage("editaEmpleados:idEmpleado", message);
-            return "listaEmpleado.xhtml";
+            return "editaEmpleado.xhtml";
         }
     } 
 
     public String borraEmpleado() {
-        if (EmpleadoGestion.insertaEmpleado(this)) {
+        if (EmpleadoGestion.borrarEmpleado(this)) {
             return "listaEmpleado.xhtml";
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "No se pudo borrar el registro");
             FacesContext.getCurrentInstance().addMessage("editaEmpleados:idEmpleado", message);
-            return "listaEmpleado.xhtml";
+            return "editaEmpleado.xhtml";
         }
     } 
     
@@ -66,6 +66,7 @@ public class EmpleadoController extends Empleado implements Serializable {
         Empleado emp = EmpleadoGestion.getEmpleado(idEmpleado);
         if (emp != null) {
             this.setIdEmpleado(emp.getIdEmpleado());
+            this.setCedula(emp.getCedula());
             this.setNombre(emp.getNombre());
             this.setNombre2(emp.getNombre2());
             this.setApellido1(emp.getApellido1());
@@ -85,6 +86,7 @@ public class EmpleadoController extends Empleado implements Serializable {
 
     public void limpiar() {
         setIdEmpleado(0);
+        setCedula(null);
         setNombre(null);
         setNombre2(null);
         setApellido1(null);

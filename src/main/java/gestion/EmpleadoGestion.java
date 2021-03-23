@@ -19,15 +19,15 @@ public class EmpleadoGestion {
     private static final String SQL_GET_EMPLEADOS = "SELECT * FROM empleado";
     private static final String SQL_GET_EMPLEADO = "SELECT * FROM empleado WHERE idEmpleado=?";
     private static final String SQL_INSERT_EMPLEADO = "INSERT INTO empleado (cedula, nombre, nombre2, apellido1, apellido2, puesto, fechaIngreso, "
-            + "genero, sueldo) VALUES (?,?,?,?,?,?,?,?,?))";
-    private static final String SQL_UPDATE_EMPLEADO = "UPDATE empleado SET cedula=?, nombre=?, nombre2=?, apellido1=? apellido2=?, puesto=, "
+            + "genero, sueldo) VALUES (?,?,?,?,?,?,?,?,?)";
+    private static final String SQL_UPDATE_EMPLEADO = "UPDATE empleado SET cedula=?, nombre=?, nombre2=?, apellido1=?, apellido2=?, puesto=?, "
             + "fechaIngreso=?, genero=?, sueldo=? WHERE idEmpleado=?";
-    private static final String SQL_DELETE_EMPLEADO = "DELETE FROM empleado WHERE cedula=?";
+    private static final String SQL_DELETE_EMPLEADO = "DELETE FROM empleado WHERE idEmpleado=?";
     
     public static boolean insertaEmpleado(Empleado em){
         try {
             Connection con = Conexion.getConexion();
-            PreparedStatement pst = con.prepareCall(SQL_INSERT_EMPLEADO);
+            PreparedStatement pst = con.prepareStatement(SQL_INSERT_EMPLEADO);
             pst.setString(1, em.getCedula());
             pst.setString(2, em.getNombre());
             pst.setString(3, em.getNombre2());
@@ -47,7 +47,7 @@ public class EmpleadoGestion {
     public static boolean actualizaEmpleado(Empleado em){
         try {
             Connection con = Conexion.getConexion();
-            PreparedStatement pst = con.prepareCall(SQL_INSERT_EMPLEADO);
+            PreparedStatement pst = con.prepareStatement(SQL_UPDATE_EMPLEADO);
             pst.setString(1, em.getCedula());
             pst.setString(2, em.getNombre());
             pst.setString(3, em.getNombre2());
@@ -68,7 +68,7 @@ public class EmpleadoGestion {
     public static boolean borrarEmpleado(Empleado em){
         try {
             Connection con = Conexion.getConexion();
-            PreparedStatement pst = con.prepareCall(SQL_INSERT_EMPLEADO);
+            PreparedStatement pst = con.prepareStatement(SQL_DELETE_EMPLEADO);
             pst.setInt(1, em.getIdEmpleado());
             return pst.executeUpdate() > 0;
         } catch (SQLException e) {
