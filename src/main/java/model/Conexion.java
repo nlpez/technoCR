@@ -25,7 +25,7 @@ public class Conexion {
     private Conexion() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-            conn = DriverManager.getConnection(DBURL, "admin", "123");
+            conn = DriverManager.getConnection(DBURL, "root", "Andy-0920");
 
         } catch (ClassNotFoundException
                 | SQLException
