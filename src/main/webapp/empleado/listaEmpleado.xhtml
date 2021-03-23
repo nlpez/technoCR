@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+
+        <ui:composition template="./../resources/templates/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form> 
+                    <b:container fluid="true">
+                        <b:panel title="Lista de empleados" look="primary" collapsible="false">
+                            <b:button value="Agregar empleado" href="#{request.contextPath}/faces/empleado/registroEmpleado.xhtml"
+                                      onclick="#{empleadoController.limpiar()}"
+                                      style="background-color: #24c73a;
+                                      margin-bottom: 10px"/>
+                            <b:dataTable value="#{empleadoController.empleados}"
+                                         var="empleado"
+                                         excel="true"
+                                         csv="true"
+                                         pdf="true"
+                                         columnVisibility="true"
+                                         copy="true"
+                                         print="true"
+                                         style="padding-top: 0px;">
+                                <b:dataTableColumn value="#{empleado.idEmpleado}" 
+                                                   label="Empleado#"
+                                                   width="4%"
+                                                   class="form__column"
+                                                   />
+                                <b:dataTableColumn value="#{empleado.cedula}" 
+                                                   label="Cedula"
+                                                   width="4%"
+                                                   class="form__column"
+                                                   />
+                                <b:dataTableColumn value="#{empleado.nombre}" 
+                                                   label="Primer Nombre"
+                                                   width="4%"
+                                                   class="form__column"
+                                                   />
+                                <b:dataTableColumn value="#{empleado.nombre2}" 
+                                                   label="Segundo Nombre"
+                                                   width="4%"
+                                                   class="form__column"
+                                                   />
+                                <b:dataTableColumn value="#{empleado.apellido1}" 
+                                                   label="Primer Apellido"
+                                                   width="4%"
+                                                   class="form__column"
+                                                   />
+                                <b:dataTableColumn value="#{empleado.apellido2}" 
+                                                   label="Segundo Apellido"
+                                                   width="4%"
+                                                   class="form__column"
+                                                   />
+                                <b:dataTableColumn value="#{empleado.puesto}" 
+                                                   label="Puesto"
+                                                   width="4%"
+                                                   class="form__column"
+                                                   />
+                                <b:dataTableColumn value="#{empleado.fechaIngreso}" 
+                                                   label="Fecha Ingreso"
+                                                   width="4%"
+                                                   class="form__column"
+                                                   />
+                                <b:dataTableColumn value="#{empleado.genero}" 
+                                                   label="Genero"
+                                                   width="4%"
+                                                   class="form__column"
+                                                   />
+                                <b:dataTableColumn value="#{empleado.sueldo}" 
+                                                   label="Salario"
+                                                   width="4%"
+                                                   class="form__column"
+                                                   />
+                                <b:dataTableColumn style="text-align: center"
+                                                   label="Acción"
+                                                   width="5%">
+                                    <b:commandButton value="Editar"
+                                                     action="#{empleadoController.editaEmpleado(empleado.idEmpleado)}"
+                                                     />
+                                </b:dataTableColumn>
+                            </b:dataTable>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
