@@ -54,7 +54,7 @@
             <div id="left">
                 <ui:insert name="left">
                     <div id="sidenavBar" class="sidenav">
-                        <a href="javascript:void(0)" class="closebtn">&times;</a>
+                        <a href="javascript:void(0)" id="close" class="closebtn">&times;</a>
                         <b:dropMenu value="Articulos" icon-awesome="fa-group">
                             <b:navLink value="Lista" icon-awesome="fa-newspaper-o" href="#{request.contextPath}/faces/articulo/listaArticulo.xhtml"/>
                             <b:navLink value="prueba" icon-awesome="fa-newspaper-o" href="#{request.contextPath}/faces/articulo/listaArticulo.xhtml"/>
@@ -63,7 +63,13 @@
                         </b:dropMenu>
                         <a href="#{request.contextPath}/faces/principal.xhtml">Inicio</a>
                         <a href="#{request.contextPath}/faces/cliente/listaCliente.xhtml">Clientes</a>
-                        <a href="#{request.contextPath}/faces/empleado/listaEmpleado.xhtml">Empleados </a>
+                        <div class="dropdown">
+                            <a href="#" onclick="abrirDropMenu()" class="droplink" id="gestEmpleado">Gestión Empleado</a>
+                            <div id="despMenu"  class="mostrar-contenido">
+                                <a href="#{request.contextPath}/faces/empleado/listaEmpleado.xhtml" >Lista de empleados</a>
+                                <a href="#{request.contextPath}/faces/empleado/registroEmpleado.xhtml" >Registrar empleado</a>
+                            </div>
+                        </div>
                         <a href="#{request.contextPath}/faces/articulo/listaArticulo.xhtml">Artículos</a>
                         <a href="#{request.contextPath}/faces/proveedor/listaProveedor.xhtml">Proveedores</a>
                         <a href="#{request.contextPath}/faces/proveedor/reporteProveedor.xhtml">Reporte Proveedores</a>
