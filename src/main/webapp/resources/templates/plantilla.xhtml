@@ -55,12 +55,7 @@
                 <ui:insert name="left">
                     <div id="sidenavBar" class="sidenav">
                         <a href="javascript:void(0)" id="close" class="closebtn">&times;</a>
-                        <b:dropMenu value="Articulos" icon-awesome="fa-group">
-                            <b:navLink value="Lista" icon-awesome="fa-newspaper-o" href="#{request.contextPath}/faces/articulo/listaArticulo.xhtml"/>
-                            <b:navLink value="prueba" icon-awesome="fa-newspaper-o" href="#{request.contextPath}/faces/articulo/listaArticulo.xhtml"/>
-                            <b:navLink value="prueba" icon-awesome="fa-newspaper-o" href="#{request.contextPath}/faces/articulo/listaArticulo.xhtml"/>
-                            <b:navLink value="prueba" icon-awesome="fa-newspaper-o" href="#{request.contextPath}/faces/articulo/listaArticulo.xhtml"/>
-                        </b:dropMenu>
+
                         <a href="#{request.contextPath}/faces/principal.xhtml">Inicio</a>
                         <a href="#{request.contextPath}/faces/cliente/listaCliente.xhtml">Clientes</a>
                         <div class="dropdown">
@@ -70,9 +65,10 @@
                                 <a href="#{request.contextPath}/faces/empleado/registroEmpleado.xhtml" >Registrar empleado</a>
                             </div>
                         </div>
-                        <a href="#{request.contextPath}/faces/articulo/listaArticulo.xhtml">Artículos</a>
+                        <a href="#{request.contextPath}/faces/articulo/listaArticulo.xhtml" >Lista de articulos</a>
                         <a href="#{request.contextPath}/faces/proveedor/listaProveedor.xhtml">Proveedores</a>
                         <a href="#{request.contextPath}/faces/proveedor/reporteProveedor.xhtml">Reporte Proveedores</a>
+
                         <a href="#{request.contextPath}/faces/inventario/listaInventario.xhtml">Inventario</a>
                         <a href="#{request.contextPath}">Factura</a>
                         <a href="#{request.contextPath}">Envios</a>
