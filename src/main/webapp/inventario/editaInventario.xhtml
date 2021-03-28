@@ -27,14 +27,14 @@
                                     <b:message for="inventarioid"/>
                                 </b:column>
                         </b:row>
-                        <b:row>
+                        <b:row  tooltip="El Codigo artículo no es modificable desde inventario, para cambiar el código hágalo desde Lista de Artículos">
                             <b:column medium-screen="2">
                                 <h:outputLabel value="Codigo Artículo" for="codigoArticulo" />
                             </b:column>
                             <b:column medium-screen="4">
                                  <b:inputText placeholder="Codigo Artículo" id="codigoArticulo" required="true"
                                               value="#{inventarioController.codigoArticulo}"
-                                                 />
+                                                readonly="true" />
                             </b:column>
                             <b:column medium-screen="6" style-class="message">
                                     <b:message for="codigoArticulo"/>
