@@ -69,4 +69,14 @@ public class Articulo {
         this.precio = precio;
     }
 
+    public String getNombreCompletoArticulo() {
+        String texto="";
+        texto+=this.nombre!=null?this.nombre+" ":" ";
+        texto+=this.marca!=null?this.marca+" ":" ";
+        texto+=this.descripcion!=null?this.descripcion+" ":" ";
+        texto+=this.codigoArticulo!=null?this.codigoArticulo+" ":" ";
+        texto+=this.precio!=null?this.precio+" ":" ";
+        return texto;
+    }
+
 }
