@@ -33,18 +33,18 @@
             <artifactId>bootsfaces</artifactId>
             <version>1.4.2</version>
             <scope>compile</scope>
-        </dependency>   
+        </dependency>
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>7.0</version>           
+            <version>10.0.0</version>
         </dependency>
         <dependency>
             <groupId>net.glxn</groupId>
             <artifactId>qrgen</artifactId>
             <version>1.4</version>           
         </dependency>
-         <dependency>
+        <dependency>
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
             <version>6.16.0</version>           

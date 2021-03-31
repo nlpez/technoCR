@@ -4,13 +4,17 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet library="css" name="default.css"/>
         <h:outputStylesheet library="css" name="cssLayout.css"/>
         <h:outputScript library="script" name="funciones.js"/>
+        <h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+        <h:outputScript library="primefaces" name="jquery/jquery-plugins.js" target="head" />
         <title>TechnoCr</title>
     </h:head>
     <h:body>
@@ -53,28 +57,40 @@
         <div>
             <div id="left">
                 <ui:insert name="left">
-                    <div id="sidenavBar" class="sidenav">
-                        <a href="javascript:void(0)" id="close" class="closebtn">&times;</a>
-
-                        <a href="#{request.contextPath}/faces/principal.xhtml">Inicio</a>
-                        <a href="#{request.contextPath}/faces/cliente/listaCliente.xhtml">Clientes</a>
-                        <div class="dropdown">
-                            <a href="#" onclick="abrirDropMenu()" class="droplink" id="gestEmpleado">Gestión Empleado</a>
-                            <div id="despMenu"  class="mostrar-contenido">
-                                <a href="#{request.contextPath}/faces/empleado/listaEmpleado.xhtml" >Lista de empleados</a>
-                                <a href="#{request.contextPath}/faces/empleado/registroEmpleado.xhtml" >Registrar empleado</a>
+                    <div class="card">
+                        <p:sidebar widgetVar="sidebar1" baseZIndex="10000" class="sidenav" style="background-color: #8a3022">
+                            <div>
+                                <a href="#" onclick="abrirDropMenu()" class="droplink" id="gestProyectoE">Gestión Empleado</a>
+                                <div id="despMenuE"  class="mostrar-contenido">
+                                    <a href="#{request.contextPath}/faces/empleado/listaEmpleado.xhtml" >Lista de empleados</a>
+                                    <a href="#{request.contextPath}/faces/empleado/registroEmpleado.xhtml" >Registrar empleado</a>
+                                </div>
                             </div>
-                        </div>
-                        <a href="#{request.contextPath}/faces/articulo/listaArticulo.xhtml" >Lista de articulos</a>
-                        <a href="#{request.contextPath}/faces/articulo/reporteArticulo.xhtml">Reporte de artículos</a>
-                        <a href="#{request.contextPath}/faces/proveedor/listaProveedor.xhtml">Proveedores</a>
-                        <a href="#{request.contextPath}/faces/proveedor/reporteProveedor.xhtml">Reporte Proveedores</a>
-
-                        <a href="#{request.contextPath}/faces/inventario/listaInventario.xhtml">Inventario</a>
-                        <a href="#{request.contextPath}">Factura</a>
-                        <a href="#{request.contextPath}">Envios</a>
+                            <div>
+                                <a href="#" onclick="abrirDropMenu()" class="droplink" id="gestProyectoC">Gestión Clientes</a>
+                                <div id="despMenuC"  class="mostrar-contenido">
+                                    <a href="#{request.contextPath}/faces/articulo/listaCliente.xhtml" >Lista de clientes</a>
+                                    <a href="#{request.contextPath}/faces/articulo/registroCliente.xhtml" >Registrar cliente</a>
+                                    <a href="#{request.contextPath}/faces/articulo/reporteCliente.xhtml">Reporte de clientes</a>
+                                </div>
+                            </div>
+                            <div>
+                                <a href="#" onclick="abrirDropMenu()" class="droplink" id="gestProyectoA">Gestión Articulos</a>
+                                <div id="despMenuA"  class="mostrar-contenido">
+                                    <a href="#{request.contextPath}/faces/articulo/listaArticulo.xhtml" >Lista de articulos</a>
+                                    <a href="#{request.contextPath}/faces/articulo/registroArticulo.xhtml" >Lista de articulos</a>
+                                    <a href="#{request.contextPath}/faces/articulo/reporteArticulo.xhtml">Reporte de artículos</a>
+                                </div>
+                            </div>
+                            <a href="#{request.contextPath}/faces/proveedor/listaProveedor.xhtml">Proveedores</a>
+                            <a href="#{request.contextPath}/faces/proveedor/reporteProveedor.xhtml">Reporte Proveedores</a>
+                            <a href="#{request.contextPath}/faces/inventario/listaInventario.xhtml">Inventario</a>
+                            <a href="#{request.contextPath}">Factura</a>
+                            <a href="#{request.contextPath}">Envios</a>
+                        </p:sidebar>
+                        <span style="font-size:30px;cursor:pointer" onclick="PF('sidebar1').show()" styleClass="p-mr-2">&#9776; Menu</span>
                     </div>
-                    <span style="font-size:30px;cursor:pointer" id="open">&#9776; Menu</span>
+
                 </ui:insert>
             </div>
             <div id="content" class="left_content">

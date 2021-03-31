@@ -37,6 +37,12 @@ h1 {
     font-family: fantasy
 }
 
+/*Para los submenus*/
+.submen {
+    font-size: 18px;
+    text-align: center;
+}
+
 /* Para el menu lateral */
 .sidenav {
     height: 100%; /* 100% Full-height */
@@ -97,7 +103,6 @@ a:link:hover, a:visited:hover, a:link:visited {
     color: #ffffff;
     font-weight : bold;
     text-decoration : none;
-    background-color: brown;
     border: solid;
 }
 
@@ -137,7 +142,7 @@ form{ /*para que la tabla que contiene la lista se acomode*/
 
 /* Dropdown button on hover & focus */
 .droplink:hover, .droplink:focus {
-    background-color: #8a3022; /*Para defiinir color de fondo del link con el drop menu*/
+    background-color: #820f07; /*Para defiinir color de fondo del link con el drop menu*/
     color: white;
     text-decoration: none;
 }
@@ -152,7 +157,7 @@ form{ /*para que la tabla que contiene la lista se acomode*/
 .mostrar-contenido {
     display: none; /*No muestra nada, hace que el menu este escondido por defecto*/
     position: absolute; 
-    background-color: #8a3022; /*Para definir el color de fondo de los links del menu desplegable*/
+    background-color: #820f07; /*Para definir el color de fondo de los links del menu desplegable*/
     color: white;
 }
 
