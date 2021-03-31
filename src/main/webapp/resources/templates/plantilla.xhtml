@@ -58,27 +58,28 @@
             <div id="left">
                 <ui:insert name="left">
                     <div class="card">
-                        <p:sidebar widgetVar="sidebar1" baseZIndex="10000" class="sidenav" style="background-color: #8a3022">
+                        <p:sidebar widgetVar="sidebar1" baseZIndex="10000" class="sidenav" style="background-color: #8a3022;
+                                   width: 280px;">
                             <div>
                                 <a href="#" onclick="abrirDropMenu()" class="droplink" id="gestProyectoE">Gestión Empleado</a>
                                 <div id="despMenuE"  class="mostrar-contenido">
                                     <a href="#{request.contextPath}/faces/empleado/listaEmpleado.xhtml" >Lista de empleados</a>
-                                    <a href="#{request.contextPath}/faces/empleado/registroEmpleado.xhtml" >Registrar empleado</a>
+                                    <a href="#{request.contextPath}/faces/empleado/registroEmpleado.xhtml" >Registrar empleados</a>
                                 </div>
                             </div>
                             <div>
                                 <a href="#" onclick="abrirDropMenu()" class="droplink" id="gestProyectoC">Gestión Clientes</a>
                                 <div id="despMenuC"  class="mostrar-contenido">
-                                    <a href="#{request.contextPath}/faces/articulo/listaCliente.xhtml" >Lista de clientes</a>
-                                    <a href="#{request.contextPath}/faces/articulo/registroCliente.xhtml" >Registrar cliente</a>
-                                    <a href="#{request.contextPath}/faces/articulo/reporteCliente.xhtml">Reporte de clientes</a>
+                                    <a href="#{request.contextPath}/faces/cliente/listaCliente.xhtml" >Lista de clientes</a>
+                                    <a href="#{request.contextPath}/faces/cliente/registroCliente.xhtml" >Registrar clientes</a>
+                                    <a href="#{request.contextPath}/faces/cliente/reporteCliente.xhtml">Reporte de clientes</a>
                                 </div>
                             </div>
                             <div>
                                 <a href="#" onclick="abrirDropMenu()" class="droplink" id="gestProyectoA">Gestión Articulos</a>
                                 <div id="despMenuA"  class="mostrar-contenido">
                                     <a href="#{request.contextPath}/faces/articulo/listaArticulo.xhtml" >Lista de articulos</a>
-                                    <a href="#{request.contextPath}/faces/articulo/registroArticulo.xhtml" >Lista de articulos</a>
+                                    <a href="#{request.contextPath}/faces/articulo/registroArticulo.xhtml" >Registrar articulos</a>
                                     <a href="#{request.contextPath}/faces/articulo/reporteArticulo.xhtml">Reporte de artículos</a>
                                 </div>
                             </div>

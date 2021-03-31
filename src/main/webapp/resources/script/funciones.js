@@ -29,7 +29,7 @@ function abrirDropMenu() {
 
     art.onclick = function () {
         document.getElementById("despMenuA").classList.toggle("mostrar");
-    }
+    };
 }
 
 // Cerrar el menu cuando el usuario hace click fuera de el
@@ -41,7 +41,6 @@ window.onclick = function (event) {
             var openDropdown = dropMenu[i];
             if (openDropdown.classList.contains('mostrar')) {
                 openDropdown.classList.remove('mostrar');
-                document.getElementById("despMenuE").style.backgroundcolor = "white";
             }
         }
     }
