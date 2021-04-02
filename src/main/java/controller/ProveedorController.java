@@ -87,4 +87,34 @@ public class ProveedorController extends Proveedor implements Serializable {
             return "listaProveedor.xhtml";
         }
     }
+
+    private boolean noImprimir = true;
+
+    public boolean isNoImprimir() {
+        return noImprimir;
+    }
+
+    public void setNoImprimir(boolean noImprimir) {
+        this.noImprimir = noImprimir;
+    }
+
+    public void buscarProveedor(String cedulaJuridica) {
+        Proveedor proveedor = ProveedorGestion.buscarProveedor(cedulaJuridica);
+        if (proveedor != null) {
+            this.setProveeid(proveedor.getProveeid());
+            this.setCedulaJuridica(proveedor.getCedulaJuridica());
+            this.setNombre(proveedor.getNombre());
+            this.setDirreccion(proveedor.getDirreccion());
+            this.setTelefono(proveedor.getTelefono());
+            this.setCorreo(proveedor.getCorreo());
+            this.setFechaIngre(proveedor.getFechaIngre());
+            noImprimir = false;
+        } else {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
+                    "El registro no se encontro");
+            FacesContext.getCurrentInstance().addMessage("reporteProveedorForm:cedulaJuridica", message);
+            noImprimir = true;
+        }
+    }
 }
+

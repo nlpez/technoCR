@@ -18,6 +18,7 @@ function abrirDropMenu() {
     var emp = document.getElementById("gestProyectoE");
     var cli = document.getElementById("gestProyectoC");
     var art = document.getElementById("gestProyectoA");
+    var pro = document.getElementById("gestProyectoP");
 
     emp.onclick = function () {
         document.getElementById("despMenuE").classList.toggle("mostrar");
@@ -29,6 +30,9 @@ function abrirDropMenu() {
 
     art.onclick = function () {
         document.getElementById("despMenuA").classList.toggle("mostrar");
+    };
+    pro.onclick = function () {
+        document.getElementById("despMenuP").classList.toggle("mostrar");
     };
 }
 

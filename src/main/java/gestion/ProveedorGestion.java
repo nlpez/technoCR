@@ -16,6 +16,7 @@ public class ProveedorGestion {
     private static final String SQL_DELETEPROVEEDOR = "Delete FROM proveedor where proveeid=?";
     private static final String SQL_GETPROVEEDORES = "SELECT * FROM proveedor";
     private static final String SQL_GETPROVEEDOR = "SELECT * FROM proveedor where proveeid=?";
+    private static final String SQL_GETPROVEEDORReporte = "SELECT * FROM proveedor where cedulaJuridica=?";
 
     public static boolean insertProveedor(Proveedor proveedor) {
         try {
@@ -106,6 +107,29 @@ public class ProveedorGestion {
                 );
             }
 
+        } catch (SQLException ex) {
+            Logger.getLogger(ProveedorGestion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return proveedor;
+    }
+
+    public static Proveedor buscarProveedor(String cedulaJuridica) {
+        Proveedor proveedor = null;
+        try {
+            PreparedStatement sentence = Conexion.getConexion().prepareStatement(SQL_GETPROVEEDORReporte);
+            sentence.setString(1, cedulaJuridica);
+            ResultSet rs = sentence.executeQuery();
+            while (rs != null && rs.next()) {
+                proveedor = new Proveedor(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getInt(5),
+                        rs.getString(6),
+                        rs.getDate(7)
+                );
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ProveedorGestion.class.getName()).log(Level.SEVERE, null, ex);
         }

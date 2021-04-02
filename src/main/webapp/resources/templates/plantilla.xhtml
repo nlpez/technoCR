@@ -83,8 +83,14 @@
                                     <a href="#{request.contextPath}/faces/articulo/reporteArticulo.xhtml">Reporte de artículos</a>
                                 </div>
                             </div>
-                            <a href="#{request.contextPath}/faces/proveedor/listaProveedor.xhtml">Proveedores</a>
-                            <a href="#{request.contextPath}/faces/proveedor/reporteProveedor.xhtml">Reporte Proveedores</a>
+                            <div>
+                                <a href="#" onclick="abrirDropMenu()" class="droplink" id="gestProyectoP">Gestión Proveedores</a>
+                                <div id="despMenuP"  class="mostrar-contenido">
+                                    <a href="#{request.contextPath}/faces/proveedor/listaProveedor.xhtml"> Lista de Proveedores</a>
+                                    <a href="#{request.contextPath}/faces/proveedor/registroProveedor.xhtml" >Registrar Proveedor</a>
+                                    <a href="#{request.contextPath}/faces/proveedor/reporteProveedor.xhtml">Reporte Proveedores</a>
+                                </div>
+                            </div>
                             <a href="#{request.contextPath}/faces/inventario/listaInventario.xhtml">Inventario</a>
                             <a href="#{request.contextPath}">Factura</a>
                             <a href="#{request.contextPath}">Envios</a>

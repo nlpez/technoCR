@@ -1,9 +1,9 @@
-
 package model;
 
 import java.util.Date;
 
 public class Proveedor {
+
     private int proveeid;
     private String cedulaJuridica;
     private String nombre;
@@ -80,9 +80,10 @@ public class Proveedor {
     public void setFechaIngre(Date fechaIngre) {
         this.fechaIngre = fechaIngre;
     }
-    
-    
-    
-    
-    
+
+    public String getNombreProveedor() {
+        String texto = "";
+        texto+=nombre!=null?nombre+" ":"";
+        return texto;
+    }
 }

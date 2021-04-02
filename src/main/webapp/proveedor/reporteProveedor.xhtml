@@ -8,14 +8,62 @@
     <body>
 
         <ui:composition template="./../resources/templates/plantilla.xhtml">
-
             <ui:define name="content">
+                <b:form id="reporteProveedorForm">
+                    <b:container >
+                        <b:panel>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Cedula Juridica:"
+                                                   for="cedulaJuridica"/>
+                                </b:column >
+                                <b:column medium-screen="2">
+                                    <b:inputText placeholder="Cedula Juridica"
+                                                 id="cedulaJuridica"
+                                                 required="true"
+                                                 value="#{proveedorController.cedulaJuridica}"/>
+                                </b:column>
+                                <b:column style="position: absolute; top: 137px ; left: 490px">
+                                    <b:commandButton value="Buscar"
+                                                     icon="search"
+                                                     look="success"
+                                                     onclick="ajax:proveedorController.buscarProveedor(proveedorController.cedulaJuridica)"
+                                                     update="@form"
+                                                     />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="cedulaJuridica"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Nombre del proveedor:" for="nombre"/>                                    
+                                </b:column>
+                                <b:column medium-screen="3">
+                                    <h:outputLabel value="#{proveedorController.nombreProveedor}" />  
+                                </b:column>                               
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="1"/>
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Imprimir"
+                                                     id="btImprimir"
+                                                     icon="print"
+                                                     look="primary"
+                                                     disabled="#{proveedorController.noImprimir}"
+                                                     action="#{reporteProveedorController.reporteProveedor(proveedorController)}"
+                                                     />
+                                </b:column>                               
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </b:form>
                 <b:form>
                     <b:container>
                         <b:panel>
                             <b:row>
                                 <b:column medium-screen="5">
-                                    <h:outputLabel value="Reporte de proveedores en PDF"
+                                    <h:outputLabel value="Reporte de todos los proveedores en PDF"
                                                    for="PDF"/>
                                 </b:column>
                                 <b:column medium-screen="4">
@@ -26,6 +74,7 @@
                         </b:panel>
                     </b:container>
                 </b:form>
+
             </ui:define>
         </ui:composition>
     </body>
