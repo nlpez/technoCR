@@ -28,9 +28,10 @@ public class ClienteController extends Cliente implements Serializable {
     public ClienteController() {
     }
 
-    public String registroCliente(){
+    public String registroCliente() {
         return "registroCliente.xhtml";
     }
+
     public String insertCliente() {
         if (ClienteGestion.insertCliente(this)) {
             return "listaCliente.xhtml";
@@ -64,11 +65,11 @@ public class ClienteController extends Cliente implements Serializable {
             return "editaCliente.xhtml";
         }
     }
-    
-        public List<Cliente> getClientes() {
+
+    public List<Cliente> getClientes() {
         return ClienteGestion.getClientes();
     }
-        
+
     public String editaCliente(int clienteId) {
         Cliente client = ClienteGestion.getCliente(clienteId);
         if (client != null) {
@@ -90,4 +91,34 @@ public class ClienteController extends Cliente implements Serializable {
         }
     }
 
+    private boolean noImprimir = true;
+
+    public boolean isNoImprimir() {
+        return noImprimir;
+    }
+
+    public void setNoImprimir(boolean noImprimir) {
+        this.noImprimir = noImprimir;
+    }
+
+    public void buscarCliente(String cedula) {
+        Cliente client = ClienteGestion.buscarCliente(cedula);
+        if (client != null) {
+            this.setClienteId(client.getClienteId());
+            this.setCedula(client.getCedula());
+            this.setNombreCliente(client.getNombreCliente());
+            this.setApellido1(client.getApellido1());
+            this.setApellido2(client.getApellido2());
+            this.setTelefono(client.getTelefono());
+            this.setDireccion(client.getDireccion());
+            this.setCorreo(client.getCorreo());
+            this.setGenero(client.getGenero());
+            noImprimir = false;
+        } else {
+            FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",
+                    "El registro no existe");
+            FacesContext.getCurrentInstance().addMessage("reporteClienteForm:cedula", mensaje);
+            noImprimir = true;
+        }
+    }
 }

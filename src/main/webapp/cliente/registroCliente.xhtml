@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:body>
         <ui:composition template="./../resources/templates/plantilla.xhtml">
@@ -129,16 +130,19 @@
                                 </b:column>
                             </b:row>
                             <b:row>
-                                <b:column medium-screen="3">
-                                    <!--<p:captcha label="Check"/>-->
+                                <b:column medium-screen="3" style="margin-left: 200px; 
+                                          margin-top: 20px; 
+                                          margin-bottom: 20px">
+                                    <p:captcha label="Check"/>  
                                 </b:column>
                                 <b:column medium-screen="2">
                                     <b:commandButton value="Registrar"
                                                      action="#{clienteController.insertCliente()}"
                                                      look="success"
                                                      style="width: 100%; 
-                                                     margin-left: -124px !important;
-                                                     margin-top: 20px;"/>
+                                                     margin-left: -320px !important;
+                                                     margin-top: 100px !important;
+                                                     "/>
                                 </b:column>
                             </b:row>
                         </b:panel>

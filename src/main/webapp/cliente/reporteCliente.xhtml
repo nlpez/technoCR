@@ -10,18 +10,68 @@
         <ui:composition template="./../resources/templates/plantilla.xhtml">
 
             <ui:define name="content">
-                               <b:form>
-                    <b:container fluid="true">
+                <b:form id="reporteClienteForm">
+                    <b:container fluid="false" style="width: 700px">
+                        <b:panel title="IMPRIMIR CLIENTE - Busque por cedula y proceda a imprimir" look="primary" collapsible="false">
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Cédula:"
+                                                   for="cedula"/>
+                                </b:column >
+                                <b:column medium-screen="2" style="display: flex; left: 40px; width: 500px; margin-right: 30px">
+                                    <b:inputText placeholder="Cédula"
+                                                 id="cedula"
+                                                 required="true"
+                                                 value="#{clienteController.cedula}"/>
+                                </b:column>
+                                <b:column style="display: flex; top: -50px; left: 400px">
+                                    <b:commandButton value="Buscar"
+                                                     icon="search"
+                                                     look="info"
+                                                     onclick="ajax:clienteController.buscarCliente(clienteController.cedula)"
+                                                     update="@form"
+                                                     />
+                                </b:column>
+                                <b:column medium-screen="10" style-class="message" style="margin-top: -50px;">
+                                    <b:message for="cedula"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2" style="width: 200px; margin-bottom: 50px ">
+                                    <h:outputLabel value="Nombre del Cliente:" for="nombreCliente" />                                    
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <h:outputLabel value="#{clienteController.nombreCompleto}" />  
+                                </b:column>                               
+                            </b:row>
+                            <b:row>
+                                <!--<b:column medium-screen="1"/>-->
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Imprimir"
+                                                     id="btImprimir"
+                                                     icon="print"
+                                                     look="primary"
+                                                     style="width: 350px !important; margin-left: 150px"
+                                                     disabled="#{clienteController.noImprimir}"
+                                                     action="#{reporteClienteController.imprimirCliente(clienteController)}"
+                                                     />
+                                </b:column>                               
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </b:form>
+                <b:form>
+                    <b:container fluid="false"  style="width: 700px">
                         <b:panel title="REPORTE DE CLIENTES - Precione la opcion deseada" look="primary" collapsible="false">
                             <b:row>
-                                <b:column medium-screen="1">
+                                <b:column medium-screen="4">
 
                                 </b:column>
                                 <b:column medium-screen="6">
                                     <b:commandButton look="warning" value="Ver PDF"
-                                                     action="#{reporteController.verPDF()}" style="margin-right: 40px"></b:commandButton>
+                                                     action="#{reporteClienteController.verPDF()}" style="margin-right: 40px"></b:commandButton>
                                     <b:commandButton look = "info" value="Descargar PDF"
-                                                     action="#{reporteController.descargarPDF()}"></b:commandButton>
+                                                     action="#{reporteClienteController.descargarPDF()}"></b:commandButton>
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
                                     <b:message for="pdf"/>

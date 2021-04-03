@@ -25,6 +25,34 @@ public class ClienteGestion {
     private static final String SQL_DELETECLIENTE = "Delete FROM cliente where clienteId=?";
     private static final String SQL_GETCLIENTES = "SELECT * FROM cliente";
     private static final String SQL_GETCLIENTE = "SELECT * FROM cliente where clienteId=?";
+    private static final String SQL_GETREPORTECLIENTE = "SELECT * FROM cliente where cedula=?";
+    
+    public static Cliente buscarCliente(String cedula) {
+        Cliente cliente = null;
+        try {
+            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_GETREPORTECLIENTE);
+            sentencia.setString(1, cedula);
+            ResultSet rs = sentencia.executeQuery();
+            while (rs != null && rs.next()) {
+                cliente = new Cliente(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9).charAt(0)
+                );
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteGestion.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        return cliente;
+    }
 
     public static boolean insertCliente(Cliente cliente) {
         try {

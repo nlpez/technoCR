@@ -10,7 +10,7 @@ package model;
  * @author Steve AS
  */
 public class Cliente {
-    
+
     private int clienteId;
     private String cedula;
     private String nombreCliente;
@@ -108,6 +108,12 @@ public class Cliente {
         this.genero = genero;
     }
 
-    
-    
+    public String getNombreCompleto() {
+        String texto = "";
+        texto += this.nombreCliente != null ? this.nombreCliente + " " : "";
+        texto += this.apellido1 != null ? this.apellido1 + " " : "";
+        texto += this.apellido2 != null ? this.apellido2 + " " : "";
+        return texto;
+    }
+
 }
