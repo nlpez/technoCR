@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:body>
 
@@ -100,15 +101,19 @@
                                 </b:column>
                             </b:row>
                             <b:row>
-                                <b:column medium-screen="3">
-                                    <!--<p:captcha label="Check"/>-->
+                                <b:column medium-screen="3" style="margin-left: 200px; 
+                                          margin-top: 20px; 
+                                          margin-bottom: 20px">
+                                    <p:captcha label="Check"/>  
                                 </b:column>
+                            </b:row>
+                            <b:row>
                                 <b:column medium-screen="2">
                                     <b:commandButton value="Registrar"
                                                      action="#{proveedorController.insertProveedor()}"
                                                      look="success"
                                                      style="width: 100%; 
-                                                     margin-left: -124px !important;
+                                                     margin-left: 215px !important;
                                                      margin-top: 20px;"/>
                                 </b:column>
                             </b:row>
