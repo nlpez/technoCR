@@ -1,13 +1,23 @@
 package gestion;
 
+import java.io.StringWriter;
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
+import javax.json.JsonWriter;
 import model.Conexion;
 import model.Proveedor;
+import org.primefaces.shaded.json.JSONObject;
+import org.primefaces.shaded.json.JSONWriter;
 
 public class ProveedorGestion {
 
@@ -134,5 +144,49 @@ public class ProveedorGestion {
             Logger.getLogger(ProveedorGestion.class.getName()).log(Level.SEVERE, null, ex);
         }
         return proveedor;
+    }
+
+    public static String generarJsonProveedor() {
+        Proveedor proveedor = null;
+        String tiraJson = "";
+        String fecha1 = "";
+        try {
+            PreparedStatement sentence = Conexion.getConexion().prepareStatement(SQL_GETPROVEEDORES);
+            ResultSet rs = sentence.executeQuery();
+            while (rs != null && rs.next()) {
+                proveedor = new Proveedor(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getInt(5),
+                        rs.getString(6),
+                        rs.getDate(7)
+                );
+                DateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+                fecha1 = sdf.format(proveedor.getFechaIngre());
+
+                JsonObjectBuilder creadorJson = Json.createObjectBuilder();
+                JsonObject objetoJson = creadorJson.add("proveeid", proveedor.getProveeid())
+                        .add("cedulaJuridica", proveedor.getCedulaJuridica())
+                        .add("nombre", proveedor.getNombre())
+                        .add("direccion", proveedor.getDirreccion())
+                        .add("telefono", proveedor.getTelefono())
+                        .add("correo", proveedor.getCorreo())
+                        .add("fechaIngre", fecha1)
+                        .build();
+                StringWriter tira = new StringWriter();
+                JsonWriter jsonWriter = Json.createWriter(tira);
+                jsonWriter.writeObject(objetoJson);
+                if (tiraJson == null) {
+                    tiraJson = tira.toString() + "\n";
+                } else {
+                    tiraJson = tiraJson + tira + "\n";
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProveedorGestion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tiraJson;
     }
 }

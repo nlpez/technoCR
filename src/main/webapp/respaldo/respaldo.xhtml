@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+
+        <ui:composition template="./../resources/templates/plantilla.xhtml">
+
+            <ui:define name="content">
+                <b:form>
+                    <b:container >
+                        <b:panel collapsible="false" title="Generar respaldo de Base de datos" look="primary">
+                            <b:row>
+                                <b:column medium-screen="3">
+                                    <b:commandButton value="Respaldar Base de datos" 
+                                                     action="#{respaldoController.respaldo()}"
+                                                     />
+                                </b:column>
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </b:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
