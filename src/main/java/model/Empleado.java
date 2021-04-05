@@ -1,4 +1,3 @@
-
 package model;
 
 import java.util.Date;
@@ -8,6 +7,7 @@ import java.util.Date;
  * @author Noel
  */
 public class Empleado {
+
     private int idEmpleado;
     private String cedula;
     private String nombre;
@@ -34,9 +34,7 @@ public class Empleado {
         this.genero = genero;
         this.sueldo = sueldo;
     }
-    
-    
-    
+
     public Empleado(String cedula, String nombre, String nombre2, String apellido1, String apellido2, String puesto, Date fechaIngreso, char genero, float sueldo) {
         this.cedula = cedula;
         this.nombre = nombre;
@@ -49,10 +47,10 @@ public class Empleado {
         this.sueldo = sueldo;
     }
 
-    public void setIdEmpleado(int idEmpleado){
+    public void setIdEmpleado(int idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
-    
+
     public int getIdEmpleado() {
         return idEmpleado;
     }
@@ -128,6 +126,18 @@ public class Empleado {
     public void setSueldo(float sueldo) {
         this.sueldo = sueldo;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "{\"Empleado\":{\n\"cedula\":\""
+                + cedula + "\",\n\"nombre\":\""
+                + nombre + "\",\n\"nombre2\":\""
+                + nombre2 + "\",\n\"apellido1\":\""
+                + apellido1 + "\",\n\"apellido2\":\""
+                + apellido2 + "\",\n\"puesto\":\""
+                + puesto + "\",\n\"fechaIngreso\":\""
+                + fechaIngreso + "\",\n\"genero\":\""
+                + genero + "\",\n\"sueldo\":\""
+                + sueldo + "\"\n}\n}";
+    }
 }

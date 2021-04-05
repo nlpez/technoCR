@@ -31,7 +31,7 @@ public class EmpleadoController extends Empleado implements Serializable {
 
     public String insertaEmpleado() {
         if (EmpleadoGestion.insertaEmpleado(this)) {
-            return "listaEmpleado.xhtml";
+            return "confirmacion.xhtml";
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "No se pudo insertar el nuevo registro");
