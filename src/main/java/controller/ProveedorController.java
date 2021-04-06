@@ -110,6 +110,12 @@ public class ProveedorController extends Proveedor implements Serializable {
             this.setFechaIngre(proveedor.getFechaIngre());
             noImprimir = false;
         } else {
+            this.setCedulaJuridica("");
+            this.setNombre("");
+            this.setDirreccion("");
+            this.setTelefono(0);
+            this.setCorreo("");
+            this.setFechaIngre(null);
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "El registro no se encontro");
             FacesContext.getCurrentInstance().addMessage("reporteProveedorForm:cedulaJuridica", message);
@@ -117,4 +123,3 @@ public class ProveedorController extends Proveedor implements Serializable {
         }
     }
 }
-
