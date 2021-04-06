@@ -5,6 +5,7 @@
  */
 package controller;
 
+import gestion.ArticuloGestion;
 import gestion.ClienteGestion;
 import gestion.ProveedorGestion;
 import java.io.File;
@@ -47,7 +48,9 @@ public class RespaldoController implements Serializable {
         //Se crea el archivo en memoria de tipo .zip
         ZipOutputStream out = null;
         try {
-            String jsonProveedor = ProveedorGestion.generarJsonProveedor() +"{\n\n\n}" + ClienteGestion.generarJsonCliente();
+            String jsonProveedor = ProveedorGestion.generarJsonProveedor() + "{\n\n\n}"
+                    + ClienteGestion.generarJsonCliente()
+                    + "{\n\n\n}" + ArticuloGestion.generarJson();
 
             File f = new File(FacesContext.getCurrentInstance()
                     .getExternalContext().getRealPath("/respaldo") + "respaldo.zip");
