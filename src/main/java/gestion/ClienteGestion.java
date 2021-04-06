@@ -5,12 +5,19 @@
  */
 package gestion;
 
+import java.io.StringWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
+import javax.json.JsonWriter;
 import model.Cliente;
 import model.Conexion;
 
@@ -26,7 +33,7 @@ public class ClienteGestion {
     private static final String SQL_GETCLIENTES = "SELECT * FROM cliente";
     private static final String SQL_GETCLIENTE = "SELECT * FROM cliente where clienteId=?";
     private static final String SQL_GETREPORTECLIENTE = "SELECT * FROM cliente where cedula=?";
-    
+
     public static Cliente buscarCliente(String cedula) {
         Cliente cliente = null;
         try {
@@ -156,4 +163,47 @@ public class ClienteGestion {
         return cliente;
     }
 
+    public static String generarJsonCliente() {
+        Cliente cliente = null;
+        String tiraJson = "";
+        try {
+            PreparedStatement sentence = Conexion.getConexion().prepareStatement(SQL_GETCLIENTES);
+            ResultSet rs = sentence.executeQuery();
+            while (rs != null && rs.next()) {
+                cliente = new Cliente(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9).charAt(0)
+                );
+                JsonObjectBuilder creadorJson = Json.createObjectBuilder();
+                JsonObject objetoJson = creadorJson.add("clienteId", cliente.getClienteId())
+                        .add("cedula", cliente.getCedula())
+                        .add("nombreCliente", cliente.getNombreCliente())
+                        .add("apellido1", cliente.getApellido1())
+                        .add("apellido2", cliente.getApellido2())
+                        .add("telefono", cliente.getTelefono())
+                        .add("direccion", cliente.getDireccion())
+                        .add("correo", cliente.getCorreo())
+                        .add("genero", cliente.getGenero())
+                        .build();
+                StringWriter tira = new StringWriter();
+                JsonWriter jsonWriter = Json.createWriter(tira);
+                jsonWriter.writeObject(objetoJson);
+                if (tiraJson == null) {
+                    tiraJson = tira.toString() + "\n";
+                } else {
+                    tiraJson = tiraJson + tira + "\n";
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteGestion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tiraJson;
+    }
 }

@@ -5,6 +5,7 @@
  */
 package controller;
 
+import gestion.ClienteGestion;
 import gestion.ProveedorGestion;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -46,7 +47,7 @@ public class RespaldoController implements Serializable {
         //Se crea el archivo en memoria de tipo .zip
         ZipOutputStream out = null;
         try {
-            String jsonProveedor = ProveedorGestion.generarJsonProveedor();
+            String jsonProveedor = ProveedorGestion.generarJsonProveedor() +"{\n\n\n}" + ClienteGestion.generarJsonCliente();
 
             File f = new File(FacesContext.getCurrentInstance()
                     .getExternalContext().getRealPath("/respaldo") + "respaldo.zip");
@@ -54,7 +55,7 @@ public class RespaldoController implements Serializable {
             out = new ZipOutputStream(new FileOutputStream(f));
 
             //Para meter cosas dentro del zip
-            ZipEntry p = new ZipEntry("Proveedor.json");
+            ZipEntry p = new ZipEntry("Respaldo.json");
             out.putNextEntry(p);
             byte[] dataProvee = jsonProveedor.getBytes();
             out.write(dataProvee, 0, dataProvee.length);
