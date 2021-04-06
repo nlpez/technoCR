@@ -10,12 +10,16 @@ import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import model.Articulo;
 import model.Conexion;
+import model.Proveedor;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -37,7 +41,7 @@ public class ReporteArticuloController implements Serializable {
 
     public void verPDFArticulo() {
         try {
-            File JS = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/articulo/articulosReport.jasper"));
+            File JS = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/reportes/ArticulosR1.jasper"));
             JasperPrint ReportJasperSoft = JasperFillManager.fillReport(JS.getPath(), null, Conexion.getConexion());
             HttpServletResponse answer = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
             answer.setContentType("application/pdf");
@@ -51,8 +55,8 @@ public class ReporteArticuloController implements Serializable {
     }
 
     public void descargarPDFArticulos() {
-            try {
-            File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/articulo/articulosReport.jasper"));
+        try {
+            File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/reportes/ArticulosR1.jasper"));
             JasperPrint ReportJasperSoft = JasperFillManager.fillReport(jasper.getPath(), null, Conexion.getConexion());
             HttpServletResponse answer = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
             answer.addHeader("Content-disposition", "attachment; filename=reporteArticulos.pdf");
@@ -63,4 +67,24 @@ public class ReporteArticuloController implements Serializable {
             Logger.getLogger(ReporteClienteController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void imprimirArticulo(Articulo articulo) {
+        Map<String, Object> parametroArticulo = new HashMap();
+        parametroArticulo.put("codigoArticulo", articulo.getCodigoArticulo());
+        parametroArticulo.put("nombre", articulo.getNombreCompletoArticulo());
+
+        try {
+            File JS = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/reportes/ArticulosR2.jasper"));
+            JasperPrint ReportJasperSoft = JasperFillManager.fillReport(JS.getPath(), parametroArticulo, Conexion.getConexion());
+            HttpServletResponse answer = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+            answer.setContentType("application/pdf");
+            answer.addHeader("Content-Type", "application/pdf");
+            ServletOutputStream flujo = answer.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(ReportJasperSoft, flujo);
+            FacesContext.getCurrentInstance().responseComplete();
+        } catch (JRException | IOException ex) {
+            Logger.getLogger(ReporteArticuloController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

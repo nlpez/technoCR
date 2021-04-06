@@ -5,11 +5,69 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-    <body>
+    <h:body>
 
         <ui:composition template="./../resources/templates/plantilla.xhtml">
 
             <ui:define name="content">
+
+                <b:form id="reporteArticuloForm">
+                    <b:container fluid="true" style="width: 700px">
+                        <b:panel title="Imprimir Informacion del articulo" look="primary" collapsible="false">
+                            <b:row>
+                                <b:column medium-screen="2" >
+                                    <h:outputLabel value="ID del articulo" 
+                                                   for="codigoArticulo"/>                                    
+                                </b:column>
+                                <b:column medium-screen="2" style="display: flex; left: 40px; width: 500px; margin-right: 30px">
+                                    <b:inputText placeholder="Codigo del articulo"
+                                                 id="codigoArticulo"
+                                                 required="true"
+                                                 value="#{articuloController.codigoArticulo}"
+                                                 />                                    
+                                </b:column>
+                                <b:column style="display: flex; top: -50px; left: 400px">
+                                    <b:commandButton value="Buscar"
+                                                     icon="search"
+                                                     look="info"
+                                                     onclick="ajax:articuloController.buscarArticulo(articuloController.codigoArticulo)"
+                                                     update="@form"                                                    
+                                                     />
+
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message" style="margin-top: -50px">
+                                    <b:message for="articuloid"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Artículo" for="nombre"/>                                    
+                                </b:column>
+                                <b:column medium-screen="3">
+                                    <h:outputLabel value="#{articuloController.nombreCompletoArticulo}" />  
+                                </b:column> 
+
+                            </b:row>
+
+                            <b:row >
+                                <b:column medium-screen="1"/>
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Imprimir"
+                                                     id="btImprimir"
+                                                     icon="print"
+                                                     look="primary"
+                                                     style="width: 350px !important; margin-left: 150px"
+                                                     disabled="#{articuloController.imprimir}"
+                                                     action="#{reporteArticuloController.imprimirArticulo(articuloController)}"/>
+
+
+
+                                </b:column>                               
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </b:form>
+
                 <b:form>
                     <b:container>
                         <b:panel>
@@ -30,5 +88,5 @@
 
         </ui:composition>
 
-    </body>
+    </h:body>
 </html>

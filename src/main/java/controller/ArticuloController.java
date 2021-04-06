@@ -90,24 +90,26 @@ public class ArticuloController extends Articulo implements Serializable {
         }
 
     }
+
     private boolean noImprimir = true;
 
     public boolean isImprimir() {
         return noImprimir;
     }
 
-    public String buscarArticulo(int id) {
-        Articulo articulo = ArticuloGestion.getArticulo(id);
+    public void buscarArticulo(String codigoArticulo) {
+        Articulo articulo = ArticuloGestion.buscarArticulo(codigoArticulo);
         if (articulo != null) {
-            this.setArticuloid(articulo.getArticuloid());
             this.setCodigoArticulo(articulo.getCodigoArticulo());
-            this.setNombre(articulo.getNombre());
+            this.setArticuloid(articulo.getArticuloid());
             this.setMarca(articulo.getMarca());
+            this.setNombre(articulo.getNombre());
             this.setDescripcion(articulo.getDescripcion());
             this.setPrecio(articulo.getPrecio());
+           
             noImprimir = false;
         } else {
-
+            
             this.setCodigoArticulo("");
             this.setNombre("");
             this.setMarca("");
@@ -115,10 +117,10 @@ public class ArticuloController extends Articulo implements Serializable {
             this.setPrecio(0.0f);
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "El articulo  no fue existe");
-            FacesContext.getCurrentInstance().addMessage("certificacionArticuloForm:ID", message);
+            FacesContext.getCurrentInstance().addMessage("reporteArticuloForm:ID", message);
             noImprimir = true;
         }
-        return "reporteArticulo.xhtml";
+
     }
 
 }

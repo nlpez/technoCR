@@ -18,6 +18,7 @@ public class ArticuloGestion {
     private static final String SQL_DELETEARTICULO = "Delete FROM articulo where articuloid=?";
     private static final String SQL_GETARTICULOS = "SELECT articuloid, marca, nombre, descripcion, codigoArticulo, precio FROM articulo";
     private static final String SQL_GETARTICULO = "SELECT articuloid, marca, nombre, descripcion, codigoArticulo, precio FROM articulo where articuloid=?";
+    private static final String SQL_GETARTICULOREPORTE = "SELECT articuloid, marca, nombre, descripcion, codigoArticulo, precio FROM articulo where codigoArticulo=?";
 
     public static boolean insertArticulo(Articulo articulo) {
         try {
@@ -99,6 +100,32 @@ public class ArticuloGestion {
         try {
             PreparedStatement sentence = Conexion.getConexion().prepareStatement(SQL_GETARTICULO);
             sentence.setInt(1, articuloid);
+            ResultSet rs = sentence.executeQuery();
+            while (rs != null && rs.next()) {
+
+                articulo = new Articulo(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getFloat(6)
+                );
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ArticuloGestion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return articulo;
+    }
+
+    public static Articulo buscarArticulo(String codigoArticulo) {
+        Articulo articulo = null;
+        try {
+            PreparedStatement sentence = Conexion.getConexion().prepareStatement(SQL_GETARTICULOREPORTE);
+            sentence.setString(1, codigoArticulo);
             ResultSet rs = sentence.executeQuery();
             while (rs != null && rs.next()) {
 
