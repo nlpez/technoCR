@@ -93,7 +93,15 @@
                                     <a href="#{request.contextPath}/faces/proveedor/reporteProveedor.xhtml">Reporte Proveedores</a>
                                 </div>
                             </div>
-                            <a href="#{request.contextPath}/faces/inventario/listaInventario.xhtml">Inventario</a>
+                            <div>
+                                <a href="#" onclick="abrirDropMenu()" class="droplink" id="gestProyectoI">Gestión Inventario</a>
+                                <div id="despMenuI"  class="mostrar-contenido">
+                                    <a href="#{request.contextPath}/faces/inventario/listaInventario.xhtml" >Lista de Inventarios</a>
+                                    <a href="#{request.contextPath}/faces/inventario/registroInventario.xhtml" >Registrar Inventarios</a>
+                                    <a href="#{request.contextPath}/faces/inventario/reporteInventario.xhtml" >Reporte de Inventarios</a>
+                                </div>
+                            </div>
+                       
                             <a href="#{request.contextPath}/faces/respaldo/respaldo.xhtml">Respaldo de BD</a>
                             <a href="#{request.contextPath}">Factura</a>
                             <a href="#{request.contextPath}">Envios</a>

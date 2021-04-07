@@ -15,6 +15,9 @@ public class Inventario {
     private String codigoArticulo;
     private int cantidadStock;
     private int proveeid;
+    
+   public Inventario() {
+    }
 
     public Inventario(int inventarioid, String codigoArticulo, int cantidadStock, int proveeid) {
         this.inventarioid = inventarioid;
@@ -23,8 +26,14 @@ public class Inventario {
         this.proveeid = proveeid;
     }
 
-    public Inventario() {
+    public Inventario(String codigoArticulo, int cantidadStock) {
+        this.codigoArticulo = codigoArticulo;
+        this.cantidadStock = cantidadStock;
     }
+    
+
+ 
+  
 
     public int getInventarioid() {
         return inventarioid;

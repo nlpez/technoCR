@@ -5,6 +5,7 @@
  */
 package controller;
 
+import gestion.ArticuloGestion;
 import gestion.ClienteGestion;
 import gestion.InventarioGestion;
 import java.io.Serializable;
@@ -14,6 +15,7 @@ import javax.enterprise.context.Dependent;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import model.Articulo;
 import model.Inventario;
 
 /**
@@ -84,6 +86,31 @@ public class InventarioController extends Inventario implements Serializable {
             FacesContext.getCurrentInstance().addMessage("editaInventarioForm:codigoArticulo", message);
             return "listaInventario.xhtml";
         }
+    }
+     private boolean noImprimir = true;
+
+    public boolean isImprimir() {
+        return noImprimir;
+    }
+        public void buscarArticulo(String codigoArticulo) {
+        Inventario inventario = InventarioGestion.buscarArticulo(codigoArticulo);
+        if (inventario != null) {
+            this.setCodigoArticulo(inventario.getCodigoArticulo());
+            this.setCantidadStock(inventario.getCantidadStock());
+            
+           
+            noImprimir = false;
+        } else {
+            
+            this.setCodigoArticulo("");
+            this.setCantidadStock(0);
+            
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
+                    "El registro de inventario no existe");
+            FacesContext.getCurrentInstance().addMessage("reporteInventarioForm:ID", message);
+            noImprimir = true;
+        }
+
     }
 
 }

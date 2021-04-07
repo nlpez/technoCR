@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Articulo;
 import model.Conexion;
 import model.Inventario;
 
@@ -29,6 +30,8 @@ public class InventarioGestion {
     private static final String SQL_GETINVENTARIOS = "SELECT * FROM inventario";
 
     private static final String SQL_GETINVENTARIO = "SELECT * FROM inventario where inventarioid=?";
+    
+    private static final String SQL_GETARTICULOREPORTE = "SELECT codigoArticulo, cantidadStock FROM inventario where codigoArticulo=?";
 
     public static boolean insertInventario(Inventario inventario) {
         try {
@@ -118,4 +121,26 @@ public class InventarioGestion {
         return invetario;
     }
 
+    public static Inventario buscarArticulo(String codigoArticulo) {
+        Inventario inventario = null;
+        try {
+            PreparedStatement sentence = Conexion.getConexion().prepareStatement(SQL_GETARTICULOREPORTE);
+            sentence.setString(1, codigoArticulo);
+            ResultSet rs = sentence.executeQuery();
+            while (rs != null && rs.next()) {
+
+                inventario = new Inventario(
+                        rs.getString(1),
+                        rs.getInt(2)
+                        
+                );
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(InventarioGestion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return inventario;
+    }
 }

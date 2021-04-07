@@ -19,6 +19,7 @@ function abrirDropMenu() {
     var cli = document.getElementById("gestProyectoC");
     var art = document.getElementById("gestProyectoA");
     var pro = document.getElementById("gestProyectoP");
+    var inv = document.getElementById("gestProyectoI");
 
     emp.onclick = function () {
         document.getElementById("despMenuE").classList.toggle("mostrar");
@@ -34,6 +35,10 @@ function abrirDropMenu() {
     pro.onclick = function () {
         document.getElementById("despMenuP").classList.toggle("mostrar");
     };
+    inv.onclick = function () {
+        document.getElementById("despMenuI").classList.toggle("mostrar");
+    };
+
 }
 
 // Cerrar el menu cuando el usuario hace click fuera de el
