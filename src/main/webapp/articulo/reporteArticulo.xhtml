@@ -69,16 +69,20 @@
                 </b:form>
 
                 <b:form>
-                    <b:container>
-                        <b:panel>
+                    <b:container fluid="false"  style="width: 700px">
+                        <b:panel title="REPORTE DE ARTICULOS - Presione la opcion deseada" look="primary" collapsible="false">
                             <b:row>
-                                <b:column medium-screen="5">
-                                    <h:outputLabel value="Reporte de Articulos en PDF"
-                                                   for="PDF"/>
-                                </b:column>
                                 <b:column medium-screen="4">
-                                    <b:commandButton look="success" value="Ver PDF"  action="#{reporteArticuloController.verPDFArticulo()}"/>
-                                    <b:commandButton look="success" value="Descargar PDF"  action="#{reporteArticuloController.descargarPDFArticulos()}"/>
+
+                                </b:column>
+                                <b:column medium-screen="6">
+                                    <b:commandButton look="warning" value="Ver PDF"
+                                                     action="#{reporteArticuloController.verPDFArticulo()}" style="margin-right: 40px"></b:commandButton>
+                                    <b:commandButton look = "info" value="Descargar PDF"
+                                                     action="#{reporteArticuloController.descargarPDFArticulos()}"></b:commandButton>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="pdf"/>
                                 </b:column>
                             </b:row>
                         </b:panel>

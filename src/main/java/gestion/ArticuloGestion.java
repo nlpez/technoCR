@@ -1,11 +1,16 @@
 package gestion;
 
+import java.io.StringWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
+import javax.json.JsonWriter;
 import model.Articulo;
 import model.Cliente;
 import model.Conexion;
@@ -145,6 +150,47 @@ public class ArticuloGestion {
         }
 
         return articulo;
+    }
+      public static String generarJson() {
+        Articulo articulo = null;
+        String tiraJson = "";
+        String fecha1 = "";
+
+        try {
+            PreparedStatement sentence = Conexion.getConexion().prepareStatement(SQL_GETARTICULOS);
+            ResultSet rs = sentence.executeQuery();
+            while (rs != null && rs.next()) {
+
+                articulo = new Articulo(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getFloat(6)
+                );
+                JsonObjectBuilder creadorJson = Json.createObjectBuilder();
+                JsonObject objectJson = creadorJson.add("articuloid", articulo.getArticuloid())
+                        .add("marca", articulo.getMarca())
+                        .add("nombre", articulo.getNombre())
+                        .add("descripcion", articulo.getDescripcion())
+                        .add("codigoArticulo", articulo.getCodigoArticulo())
+                        .add("precio", articulo.getPrecio()).build();
+                StringWriter tira = new StringWriter();
+                JsonWriter jsonWriter = Json.createWriter(tira);
+                jsonWriter.writeObject(objectJson);
+                if (tiraJson == null) {
+                    tiraJson = tira.toString() + "\n";
+                } else {
+                    tiraJson = tiraJson + tira.toString() + "\n";
+                }
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ArticuloGestion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tiraJson;
     }
 
 }
