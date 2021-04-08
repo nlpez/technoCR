@@ -7,6 +7,7 @@ package controller;
 
 import gestion.ArticuloGestion;
 import gestion.ClienteGestion;
+import gestion.InventarioGestion;
 import gestion.ProveedorGestion;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -50,7 +51,8 @@ public class RespaldoController implements Serializable {
         try {
             String jsonProveedor = ProveedorGestion.generarJsonProveedor() + "{\n\n\n}"
                     + ClienteGestion.generarJsonCliente()
-                    + "{\n\n\n}" + ArticuloGestion.generarJson();
+                    + "{\n\n\n}" + ArticuloGestion.generarJson()
+                    + "{\n\n\n}" + InventarioGestion.generarJsonInventario();
 
             File f = new File(FacesContext.getCurrentInstance()
                     .getExternalContext().getRealPath("/respaldo") + "respaldo.zip");

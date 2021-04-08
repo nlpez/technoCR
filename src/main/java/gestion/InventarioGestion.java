@@ -5,15 +5,23 @@
  */
 package gestion;
 
+import java.io.StringWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
+import javax.json.JsonWriter;
 import model.Articulo;
 import model.Conexion;
 import model.Inventario;
+import model.Proveedor;
 
 /**
  *
@@ -142,5 +150,42 @@ public class InventarioGestion {
         }
 
         return inventario;
+    }
+        public static String generarJsonInventario() {
+        Inventario inventario = null;
+        String tiraJson = "";
+        try {
+            PreparedStatement sentence = Conexion.getConexion().prepareStatement(SQL_GETINVENTARIOS);
+            ResultSet rs = sentence.executeQuery();
+            while (rs != null && rs.next()) {
+                inventario = new Inventario(
+                        
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getInt(4)
+                       
+                );
+                
+                JsonObjectBuilder creadorJson = Json.createObjectBuilder();
+                JsonObject objetoJson = creadorJson
+                        .add("inventarioid", inventario.getInventarioid())
+                        .add("codigoArticulo", inventario.getCodigoArticulo())
+                        .add("cantidadStock", inventario.getCantidadStock())
+                        .add("proveeid", inventario.getProveeid())
+                        .build();
+                StringWriter tira = new StringWriter();
+                JsonWriter jsonWriter = Json.createWriter(tira);
+                jsonWriter.writeObject(objetoJson);
+                if (tiraJson == null) {
+                    tiraJson = tira.toString() + "\n";
+                } else {
+                    tiraJson = tiraJson + tira + "\n";
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProveedorGestion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tiraJson;
     }
 }
