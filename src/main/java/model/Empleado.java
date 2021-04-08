@@ -18,6 +18,7 @@ public class Empleado {
     private Date fechaIngreso;
     private char genero;
     private float sueldo;
+    private String nombreCompleto;
 
     public Empleado() {
     }
@@ -95,6 +96,14 @@ public class Empleado {
         this.apellido2 = apellido2;
     }
 
+    private void setNombreCompleto() {
+        this.nombreCompleto = this.nombre +" " +  this.nombre2 + " " + this.apellido1 + " " + this.apellido2;
+    }
+    
+    public String getNombreCompleto() {
+        return this.nombreCompleto = this.nombre +" " +  this.nombre2 + " " + this.apellido1 + " " + this.apellido2;
+    }    
+    
     public String getPuesto() {
         return puesto;
     }
