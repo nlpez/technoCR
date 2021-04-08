@@ -84,6 +84,38 @@ public class EmpleadoController extends Empleado implements Serializable {
         }
     }
 
+     private boolean noImprimir = true;
+
+    public boolean isNoImprimir() {
+        return noImprimir;
+    }
+
+    public void setNoImprimir(boolean noImprimir) {
+        this.noImprimir = noImprimir;
+    }
+
+    public void buscarEmpleado(String cedula) {
+        Empleado emp = EmpleadoGestion.buscaEmpleados(cedula);
+        if (emp != null) {
+            this.setIdEmpleado(emp.getIdEmpleado());
+            this.setCedula(emp.getCedula());
+            this.setNombre(emp.getNombre());
+            this.setNombre2(emp.getNombre2());
+            this.setApellido1(emp.getApellido1());
+            this.setApellido2(emp.getApellido2());
+            this.setPuesto(emp.getPuesto());
+            this.setFechaIngreso(emp.getFechaIngreso());
+            this.setGenero(emp.getGenero());
+            this.setSueldo(emp.getSueldo());
+            noImprimir = false;
+        } else {
+            FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",
+                    "El registro no existe");
+            FacesContext.getCurrentInstance().addMessage("reporteEmpleadoForm:cedula", mensaje);
+            noImprimir = true;
+        }
+    }
+    
     public void limpiar() {
         setIdEmpleado(0);
         setCedula(null);

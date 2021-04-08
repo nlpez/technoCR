@@ -10,18 +10,73 @@
         <ui:composition template="./../resources/templates/plantilla.xhtml">
 
             <ui:define name="content">
-                <b:form>
-                    <b:container>
-                        <b:panel>
+                <b:form id="reporteEmpleadoForm">
+                    <b:container fluid="false" style="width: 700px">
+                        <b:panel title="IMPRIMIR EMPLEADO - Busque por cedula y proceda a imprimir" look="primary" collapsible="false">
                             <b:row>
-                                <b:column medium-screen="5">
-                                    <h:outputLabel value="Reporte de Empleados en PDF"
-                                                   for="PDF"/>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Cédula:"
+                                                   for="cedula"/>
+                                </b:column >
+                                <b:column medium-screen="2" style="display: flex; left: 40px; width: 500px; margin-right: 30px">
+                                    <b:inputText placeholder="Cédula"
+                                                 id="cedula"
+                                                 required="true"
+                                                 value="#{empleadoController.cedula}"/>
+                                </b:column>
+                                <b:column style="display: flex; top: -50px; left: 400px">
+                                    <b:commandButton value="Buscar"
+                                                     icon="search"
+                                                     look="info"
+                                                     onclick="ajax:empleadoController.buscarEmpleado(empleadoController.cedula)"
+                                                     update="@form"
+                                                     />
+                                </b:column>
+                                <b:column medium-screen="10" style-class="message" style="margin-top: -50px;">
+                                    <b:message for="cedula"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2" style="width: 200px; margin-bottom: 50px ">
+                                    <h:outputLabel value="Nombre del Empleado:" for="nombre" />                                    
                                 </b:column>
                                 <b:column medium-screen="4">
-                                    <b:commandButton look="success" value="Ver PDF"  action="#{reporteEmpleadoController.verPDFEmpleado()}"/>
-                                    <b:commandButton look="success" value="Descargar PDF"  action="#{reporteEmpleadoController.descargarPDFEmpleados()}"/>
+                                    <h:outputLabel value="#{empleadoController.nombre}"/>  
+                                </b:column>                               
+                            </b:row>
+                            <b:row>
+                                <!--<b:column medium-screen="1"/>-->
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Imprimir"
+                                                     id="btImprimir"
+                                                     icon="print"
+                                                     look="primary"
+                                                     style="width: 350px !important; margin-left: 150px"
+                                                     disabled="#{empleadoController.noImprimir}"
+                                                     action="#{reporteEmpleadoController.imprimirEmpleado(empleadoController)}"
+                                                     />
+                                </b:column>                               
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </b:form>
+                <b:form>
+                    <b:container fluid="false"  style="width: 700px">
+                        <b:panel title="REPORTE DE EMPLEADOS - Presione la opcion deseada" look="primary" collapsible="false">
+                            <b:row>
+                                <b:column medium-screen="4">
+
                                 </b:column>
+                                <b:column medium-screen="6">
+                                    <b:commandButton look="warning" value="Ver PDF"
+                                                     action="#{reporteEmpleadoController.verPDF()}" style="margin-right: 40px"></b:commandButton>
+                                    <b:commandButton look = "info" value="Descargar PDF"
+                                                     action="#{reporteEmpleadoController.descargarPDF()}"></b:commandButton>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="pdf"/>
+                                </b:column>
+
                             </b:row>
                         </b:panel>
                     </b:container>
