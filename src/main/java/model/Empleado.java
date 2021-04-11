@@ -94,14 +94,11 @@ public class Empleado {
 
     public void setApellido2(String apellido2) {
         this.apellido2 = apellido2;
+         this.nombreCompleto = this.nombre +" " +  this.nombre2 + " " + this.apellido1 + " " + this.apellido2;
     }
 
-    private void setNombreCompleto() {
-        this.nombreCompleto = this.nombre +" " +  this.nombre2 + " " + this.apellido1 + " " + this.apellido2;
-    }
-    
-    public String getNombreCompleto() {
-        return this.nombreCompleto = this.nombre +" " +  this.nombre2 + " " + this.apellido1 + " " + this.apellido2;
+     public String getNombreCompleto() {
+        return nombreCompleto;
     }    
     
     public String getPuesto() {

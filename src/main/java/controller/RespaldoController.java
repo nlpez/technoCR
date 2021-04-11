@@ -7,6 +7,7 @@ package controller;
 
 import gestion.ArticuloGestion;
 import gestion.ClienteGestion;
+import gestion.EmpleadoGestion;
 import gestion.InventarioGestion;
 import gestion.ProveedorGestion;
 import java.io.File;
@@ -22,14 +23,8 @@ import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.faces.context.FacesContext;
-import javax.json.Json;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
-import static javax.ws.rs.client.Entity.json;
-import model.Conexion;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
 
 /**
  *
@@ -52,8 +47,9 @@ public class RespaldoController implements Serializable {
             String jsonProveedor = ProveedorGestion.generarJsonProveedor() + "{\n\n\n}"
                     + ClienteGestion.generarJsonCliente()
                     + "{\n\n\n}" + ArticuloGestion.generarJson()
-                    + "{\n\n\n}" + InventarioGestion.generarJsonInventario();
-
+                    + "{\n\n\n}" + InventarioGestion.generarJsonInventario()
+                    + "{\n\n\n}" + EmpleadoGestion.generarJsonEmpleado();
+            
             File f = new File(FacesContext.getCurrentInstance()
                     .getExternalContext().getRealPath("/respaldo") + "respaldo.zip");
 

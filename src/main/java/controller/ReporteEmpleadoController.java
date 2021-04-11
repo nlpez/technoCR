@@ -67,10 +67,9 @@ public class ReporteEmpleadoController implements Serializable {
         }
     }
     
-    public void imprimirCliente(Empleado emp) {
+    public void imprimirEmpleado(Empleado emp) {
         Map<String, Object> parametroCedula = new HashMap();
         parametroCedula.put("cedula",emp.getCedula());
-        parametroCedula.put("nombre", emp.getNombre());
         try {
             File JS = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/reportes/repoEmpleados2.jasper"));
             JasperPrint ReportJasperSoft = JasperFillManager.fillReport(JS.getPath(), parametroCedula, Conexion.getConexion());

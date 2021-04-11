@@ -6,6 +6,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -37,7 +39,7 @@ public class EmpleadoGestion {
             pst.setString(1, cedula);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                emp  = new Empleado(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
+                emp = new Empleado(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
                         rs.getDate(8), rs.getString(9).charAt(0), rs.getFloat(10));
             }
         } catch (SQLException e) {
@@ -136,17 +138,29 @@ public class EmpleadoGestion {
         }
         return em;
     }
-    
-     public static String generarJsonEmpleado() {
+
+    public static String generarJsonEmpleado() {
         Empleado emp = null;
         String tiraJson = "";
+        String fecha = "";
         try {
             PreparedStatement sentence = Conexion.getConexion().prepareStatement(SQL_GET_EMPLEADOS);
             ResultSet rs = sentence.executeQuery();
             while (rs != null && rs.next()) {
-                emp  = new Empleado(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
-                        rs.getDate(8), rs.getString(9).charAt(0), rs.getFloat(10));
-            
+                emp = new Empleado(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getDate(8),
+                        rs.getString(9).charAt(0),
+                        rs.getFloat(10));
+
+                DateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+                fecha = sdf.format(emp.getFechaIngreso());
+
                 JsonObjectBuilder creadorJson = Json.createObjectBuilder();
                 JsonObject objetoJson = creadorJson.add("IdEmpleado", emp.getIdEmpleado())
                         .add("cedula", emp.getCedula())
@@ -155,7 +169,7 @@ public class EmpleadoGestion {
                         .add("apellido1", emp.getApellido1())
                         .add("apellido2", emp.getApellido2())
                         .add("puesto", emp.getPuesto())
-                        .add("fechaIngreso", emp.getFechaIngreso().getTime())
+                        .add("fechaIngreso", fecha)
                         .add("genero", emp.getGenero())
                         .add("sueldo", emp.getSueldo())
                         .build();

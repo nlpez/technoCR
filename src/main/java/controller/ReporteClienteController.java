@@ -7,15 +7,14 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.Servlet;
+import javax.inject.Named;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import model.Cliente;

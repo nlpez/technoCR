@@ -113,17 +113,18 @@ public class EmpleadoController extends Empleado implements Serializable {
                     "El registro no existe");
             FacesContext.getCurrentInstance().addMessage("reporteEmpleadoForm:cedula", mensaje);
             noImprimir = true;
+            limpiar();
         }
     }
     
     public void limpiar() {
         setIdEmpleado(0);
-        setCedula(null);
-        setNombre(null);
-        setNombre2(null);
-        setApellido1(null);
-        setApellido2(null);
-        setPuesto(null);
+        setCedula("");
+        setNombre("");
+        setNombre2("");
+        setApellido1("");
+        setApellido2("");
+        setPuesto("");
         setFechaIngreso(null);
         setGenero('\0');
         setSueldo(0);
