@@ -9,12 +9,19 @@
             <ui:define name="content">
                 <b:form>
                     <b:container fluid="false"  style="width: 700px">
-                        <b:panel title="PAGINA PRINCIPAL" look="danger" collapsible="false">
+                        <b:panel title="USUARIO" look="danger" collapsible="false">
                             <b:row>
                                 <b:column medium-screen="4">
                                 </b:column>
                                 <b:column medium-screen="6">
-                                    <p>Bienvenido de nuevo ${usuarioController.nombreUsuario}</p>
+                                    <h2 align="left">Bienvenido de nuevo ${usuarioController.nombreUsuario}</h2>
+                                </b:column>
+                            </b:row>
+                             <b:row>
+                                <b:column medium-screen="4">
+                                </b:column>
+                                <b:column medium-screen="6">
+                                    <h4 align="left">Usted ha ingresado como: ${usuarioController.idRol}</h4>
                                 </b:column>
                             </b:row>
                         </b:panel>
