@@ -11,36 +11,36 @@
         <ui:composition template="./../resources/templates/plantilla.xhtml">
             <ui:define name="content">
                 <h:form id="editaInventarioForm">
-                    <b:container fluid="true">
-                         <b:panel title="Editar Inventario" look="info" collapsible="false">  
-                        <b:row tooltip="ATENCIÓN: El ID no es modificable">
-                         
-                            <b:column medium-screen="2">
-                                <h:outputLabel value="ID" for="inventarioid" />
-                            </b:column>
-                            <b:column medium-screen="4">
-                                 <b:inputText placeholder="Inventario ID" id="inventarioid" required="true"
-                                              value="#{inventarioController.inventarioid}"
-                                              readonly="true"/>
-                            </b:column>
-                            <b:column medium-screen="6" style-class="message">
+                    <b:container rendered="#{usuarioController.idRol=='servicio' or usuarioController.idRol=='administrador'}" fluid="true">
+                        <b:panel title="Editar Inventario" look="info" collapsible="false">  
+                            <b:row tooltip="ATENCIÓN: El ID no es modificable">
+
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="ID" for="inventarioid" />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Inventario ID" id="inventarioid" required="true"
+                                                 value="#{inventarioController.inventarioid}"
+                                                 readonly="true"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
                                     <b:message for="inventarioid"/>
                                 </b:column>
-                        </b:row>
-                        <b:row  tooltip="El Codigo artículo no es modificable desde inventario, para cambiar el código hágalo desde Lista de Artículos">
-                            <b:column medium-screen="2">
-                                <h:outputLabel value="Codigo Artículo" for="codigoArticulo" />
-                            </b:column>
-                            <b:column medium-screen="4">
-                                 <b:inputText placeholder="Codigo Artículo" id="codigoArticulo" required="true"
-                                              value="#{inventarioController.codigoArticulo}"
-                                                readonly="true" />
-                            </b:column>
-                            <b:column medium-screen="6" style-class="message">
+                            </b:row>
+                            <b:row  tooltip="El Codigo artículo no es modificable desde inventario, para cambiar el código hágalo desde Lista de Artículos">
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Codigo Artículo" for="codigoArticulo" />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Codigo Artículo" id="codigoArticulo" required="true"
+                                                 value="#{inventarioController.codigoArticulo}"
+                                                 readonly="true" />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
                                     <b:message for="codigoArticulo"/>
                                 </b:column>
-                        </b:row>
-                         <b:row>
+                            </b:row>
+                            <b:row>
                                 <b:column medium-screen="2">
                                     <h:outputText value="Cantidad" />
                                 </b:column>
@@ -53,7 +53,7 @@
                                     <b:message for="cantidadStock"/>
                                 </b:column>
                             </b:row>
-                          <b:row>
+                            <b:row>
                                 <b:column medium-screen="2">
                                     <h:outputText value="Proveedor ID" />
                                 </b:column>
@@ -66,7 +66,7 @@
                                     <b:message for="proveeid"/>
                                 </b:column>
                             </b:row>
-                         <b:row>
+                            <b:row>
                                 <b:column medium-screen="2"/>
                                 <b:column medium-screen="4">
                                     <b:commandButton value="Modificar"
@@ -83,11 +83,14 @@
                                     </b:commandButton>
                                 </b:column>                                
                             </b:row>
-                         </b:panel>
+                        </b:panel>
                     </b:container>
-
+                    <b:container rendered="#{usuarioController.idRol=='respaldo'}" fluid="false" style="width: 700px">
+                        <b:panel title="La funcion no esta disponible para su usuario" look="primary" collapsible="false">
+                            <h5 align="center">Contacte con su proveedor de servicio en caso de error</h5>
+                        </b:panel>
+                    </b:container>
                 </h:form>
-
             </ui:define>
         </ui:composition>
     </h:body>

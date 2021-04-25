@@ -10,7 +10,7 @@
 
             <ui:define name="content">
                 <b:form>
-                    <b:container >
+                    <b:container rendered="#{usuarioController.idRol=='administrador' or usuarioController.idRol=='respaldo' }">
                         <b:panel collapsible="false" title="Generar respaldo de Base de datos" look="primary">
                             <b:row>
                                 <b:column medium-screen="3">
@@ -21,10 +21,13 @@
                             </b:row>
                         </b:panel>
                     </b:container>
+                    <b:container rendered="#{usuarioController.idRol=='servicio'}" fluid="false" style="width: 700px">
+                        <b:panel title="La funcion de respaldo de Base de datos no esta disponible para su usuario" look="primary" collapsible="false">
+                            <h5 align="center">Contacte con su proveedor de servicio en caso de error</h5>
+                        </b:panel>
+                    </b:container>
                 </b:form>
             </ui:define>
-
         </ui:composition>
-
     </body>
 </html>

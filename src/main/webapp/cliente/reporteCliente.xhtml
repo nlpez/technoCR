@@ -11,7 +11,7 @@
 
             <ui:define name="content">
                 <b:form id="reporteClienteForm">
-                    <b:container fluid="false" style="width: 700px">
+                    <b:container rendered="#{usuarioController.idRol=='administrador' or usuarioController.idRol=='servicio'}" fluid="false" style="width: 700px">
                         <b:panel title="IMPRIMIR CLIENTE - Busque por cedula y proceda a imprimir" look="primary" collapsible="false">
                             <b:row>
                                 <b:column medium-screen="2">
@@ -61,7 +61,7 @@
                     </b:container>
                 </b:form>
                 <b:form>
-                    <b:container fluid="false"  style="width: 700px">
+                    <b:container rendered="#{usuarioController.idRol=='administrador' or usuarioController.idRol=='servicio'}" fluid="false"  style="width: 700px">
                         <b:panel title="REPORTE DE CLIENTES - Presione la opcion deseada" look="primary" collapsible="false">
                             <b:row>
                                 <b:column medium-screen="4">
@@ -78,6 +78,11 @@
                                 </b:column>
 
                             </b:row>
+                        </b:panel>
+                    </b:container>
+                    <b:container rendered="#{usuarioController.idRol=='respaldo'}" fluid="false" style="width: 700px">
+                        <b:panel title="La funcion de reportes no esta disponible para su usuario" look="primary" collapsible="false">
+                            <h5 align="center">Contacte con su proveedor de servicio en caso de error</h5>
                         </b:panel>
                     </b:container>
                 </b:form>

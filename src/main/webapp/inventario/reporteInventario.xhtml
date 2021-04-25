@@ -11,7 +11,7 @@
 
             <ui:define name="content">
    <b:form id="reporteInventarioForm">
-                    <b:container fluid="true" style="width: 700px">
+                    <b:container rendered="#{usuarioController.idRol=='servicio' or usuarioController.idRol=='administrador'}" fluid="true" style="width: 700px">
                         <b:panel title="Imprimir Informacion del Inventario" look="primary" collapsible="false">
                             <b:row>
                                 <b:column medium-screen="2" >
@@ -68,7 +68,7 @@
                 </b:form>
             
                 <b:form>
-                    <b:container>
+                    <b:container rendered="#{usuarioController.idRol=='servicio' or usuarioController.idRol=='administrador'}">
                         <b:panel>
                             <b:row>
                                 <b:column medium-screen="5">
@@ -80,6 +80,11 @@
                                     <b:commandButton look="success" value="Descargar PDF"  action="#{reporteInventarioController.descargarPDFInventarios()}"/>
                                 </b:column>
                             </b:row>
+                        </b:panel>
+                    </b:container>
+                     <b:container rendered="#{usuarioController.idRol=='respaldo'}" fluid="false" style="width: 700px">
+                        <b:panel title="La funcion de reportes no esta disponible para su usuario" look="primary" collapsible="false">
+                                      <h5 align="center">Contacte con su proveedor de servicio en caso de error</h5>
                         </b:panel>
                     </b:container>
                 </b:form>
