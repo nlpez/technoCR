@@ -51,6 +51,14 @@
                             </h:form>
                         </b:dropMenu>
                     </b:navbarLinks>
+                    <b:navbarLinks style="position: absolute; top: 42% ; left: 70%">
+                        <b:dropMenu style="background: #8a3022;" value="Dashboard">
+                            <b:navLink style="background: #8a3022" value="Dashboard 1" href="#{request.contextPath}"/>
+                            <b:navLink style="background: #8a3022" value="Dashboard 2" href="#{request.contextPath}"/>
+                            <b:navLink style="background: #8a3022" value="Dashboard 3" href="#{request.contextPath}"/>
+                        </b:dropMenu>
+                    </b:navbarLinks>
+                    <b:button style="position: absolute; top: 50% ; left: 90%; background: #8a3022" value="Salir" href="#{request.contextPath}/faces/index.xhtml"/>
                 </b:navBar>
             </ui:insert>
         </div>
@@ -102,10 +110,7 @@
                                     <a href="#{request.contextPath}/faces/inventario/reporteInventario.xhtml" >Reporte de Inventarios</a>
                                 </div>
                             </div>
-                       
                             <a href="#{request.contextPath}/faces/respaldo/respaldo.xhtml">Respaldo de BD</a>
-                            <a href="#{request.contextPath}">Factura</a>
-                            <a href="#{request.contextPath}">Envios</a>
                         </p:sidebar>
                         <span style="font-size:30px;cursor:pointer" onclick="PF('sidebar1').show()" styleClass="p-mr-2">&#9776; Menu</span>
                     </div>

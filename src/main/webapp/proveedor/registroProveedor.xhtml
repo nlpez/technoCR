@@ -12,7 +12,7 @@
 
             <ui:define name="content">
                 <h:form id="registroProveedorForm">
-                    <b:container fluid="true">
+                    <b:container rendered="#{usuarioController.idRol=='administrador' or usuarioController.idRol=='servicio'}" fluid="true">
                         <b:panel title="Registrar Proveedor" look="success" collapsible="false">
                             <b:row   tooltip="ATENCIÓN: No se puede ingresar una cedula Juridica ya registrada">
                                 <b:column medium-screen="2">
@@ -117,6 +117,11 @@
                                                      margin-top: 20px;"/>
                                 </b:column>
                             </b:row>
+                        </b:panel>
+                    </b:container>
+                     <b:container rendered="#{usuarioController.idRol=='respaldo'}" fluid="false" style="width: 700px">
+                        <b:panel title="La funcion no esta disponible para su usuario" look="primary" collapsible="false">
+                            <h5 align="center">Contacte con su proveedor de servicio en caso de error</h5>
                         </b:panel>
                     </b:container>
                 </h:form>

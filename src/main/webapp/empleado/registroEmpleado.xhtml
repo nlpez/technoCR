@@ -12,7 +12,7 @@
 
             <ui:define name="content">
                 <h:form id="registroEmpleadosForm">
-                    <b:container fluid="true">
+                    <b:container rendered="#{usuarioController.idRol=='administrador' or usuarioController.idRol=='servicio'}" fluid="true">
                         <b:panel title="Agregar Empleados" look="info" collapsible="false">                
                             <b:row tooltip="ATENCIÓN: El ID lo asigna el sistema">
                                 <b:column medium-screen="2">
@@ -168,6 +168,11 @@
                                           margin-left: 15px"/>
                             </b:row>
                         </b:panel> 
+                    </b:container>
+                    <b:container rendered="#{usuarioController.idRol=='respaldo'}" fluid="false" style="width: 700px">
+                        <b:panel title="La funcion no esta disponible para su usuario" look="primary" collapsible="false">
+                            <h5 align="center">Contacte con su proveedor de servicio en caso de error</h5>
+                        </b:panel>
                     </b:container>
                 </h:form>
             </ui:define>

@@ -3,17 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:b="http://bootsfaces.net/ui">
 
     <body>
 
         <ui:composition template="./../resources/templates/plantilla.xhtml">
 
             <ui:define name="content">
-                <h:form id="editaArticuloForm" enctype="multipart/form-data">
-                    <b:container fluid="true">
+                <h:form id="editaArticuloForm">
+                    <b:container rendered="#{usuarioController.idRol=='administrador' or usuarioController.idRol=='servicio'}" fluid="true">
                         <b:panel title="Editar Articulo" look="info" collapsible="false">
                             <b:row tooltip="El ID del articulo no es modificable">
                                 <b:column medium-screen="2">
@@ -100,36 +98,6 @@
                                 </b:column>
                             </b:row>
                             <b:row>
-                                <b:column medium-screen="2">
-                                    <h:outputLabel value="Imagen Actual" for="image"/>
-                                </b:column>
-                                <b:column medium-screen="4">
-                                    <p:graphicImage id="image" value="/image?id=#{articuloController.articuloid}" width="250" height="200" cache="false"/>
-                                </b:column>
-                            </b:row>
-                            <b:row>
-                                <b:column mediumScreen="4">
-                                    <h:outputLabel value="Puede mantener la imagen o seleccionar una nueva" for="newImage"/>
-                                </b:column>
-                                <b:column medium-screen="4" >
-                                    <div>
-                                        <h:form enctype="multipart/form-data" id="newImage">
-                                            <div class="form-input">
-                                                <h:inputFile value="#{articuloImagenController.uploadedFile}" onchange="showPreview(event);">
-                                                    <f:ajax listener="#{articuloImagenController.upload()}"/>
-                                                </h:inputFile>
-                                                <div id="preview">
-                                                    <img id="file-preview"/>
-                                                </div>
-                                            </div>
-                                        </h:form>
-                                    </div>
-                                </b:column>
-                                <b:column medium-screen="6" style-class="message">
-                                    <b:message for="newImage"/>
-                                </b:column>
-                            </b:row>
-                            <b:row>
                                 <b:column medium-screen="2"/>
                                 <b:column medium-screen="4">
                                     <b:commandButton value="Actualizar"
@@ -144,15 +112,16 @@
 
                                     </b:commandButton>
                                 </b:column>
-
-
                             </b:row>
+                        </b:panel>
+                    </b:container>
+                     <b:container rendered="#{usuarioController.idRol=='respaldo'}" fluid="false" style="width: 700px">
+                        <b:panel title="La funcion no esta disponible para su usuario" look="primary" collapsible="false">
+                            <h5 align="center">Contacte con su proveedor de servicio en caso de error</h5>
                         </b:panel>
                     </b:container>
                 </h:form>
             </ui:define>
-
         </ui:composition>
-
     </body>
 </html>
