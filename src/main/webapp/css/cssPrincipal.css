@@ -1,0 +1,170 @@
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /*1 rem sea igual a 10 pixeles*/
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    font-size: 1.6rem;
+    line-height: 2; /*en los blogs es bueno tener un interlineado alto para que sea mas facil de leer el contenido*/
+}
+.menu-fixed {
+    position:fixed;
+    z-index:1000;
+    top:0;
+    max-width:3000px;
+    width:100%;
+    box-shadow:0px 4px 3px rgba(0,0,0,.5);
+}
+.contenedor {
+    width: 70%;
+    max-width: 120000px;
+    /*width: min(90%, 120rem); esto es exactamente lo mismo que las dos lineas de arriba, es mas nuevo*/
+    margin: 0 auto; /*Estas tres propiedades centran cualquier contenido*/
+    display: flex;
+    justify-content: center;
+}
+img {
+    height: 120px;
+    width: 150px;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+.titulo {
+    font-family: fantasy;
+}
+.entrada {
+
+}
+.comprar_titulo {
+    text-align: center;
+    font-family: fantasy;
+    margin-bottom: 70px;
+}
+.bloque__tituto {
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.bloques {
+
+    text-align: justify;
+
+}
+.bloque {
+    margin-right: 25px;
+    padding-right: 25px;
+    border-right: 1px solid gray;
+}
+.bloque:last-of-type {
+    border-right: none;
+}
+.Nosotros {
+    display: grid; 
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 80px;
+}
+.titulo {
+    grid-column: 1/6;
+    text-align: center;
+    font-family: fantasy;
+    margin-bottom: 70px;
+
+}
+.entrada {
+    text-align:justify;
+}
+.sillaGamer {
+    margin: 0;
+    padding: 0;
+    grid-column: 1/3;
+    grid-row: 2/3;
+}
+.sillaGamer img {
+    height: 500px;
+    width: auto;
+}
+.parrafo1 {
+    margin-top:55px; 
+    grid-column: 3/6;
+}
+.headset {
+    height: 200px;
+    width: auto;
+}
+.titulo--Nosotros {
+    border-top: 1px solid #036fab;
+    padding-top:20px;
+}
+.parrafo2 {
+    margin-top:55px; 
+    grid-column: 1/3;
+}
+.campoTeclado {
+    margin-top:0px; 
+    grid-row: 3/4;
+    grid-column: 3/6;
+
+}
+.tecladoRazer {
+    height: 310px;
+    width: 600px;
+}
+.subTitulo {
+
+    font-weight: 600;
+}
+.campoMouse {
+    margin-top: 70px;
+    grid-column: 1/2;
+}
+.mouseRazer {
+    height: 160px;
+    width: auto;
+    margin-right: 50px;
+}
+.parrafo3 {
+    margin-top: 20px;
+    grid-column: 2/6;
+    grid-row: 4/5;
+}
+.titulo--Contacto {
+    grid-column: 1/6;  
+    margin-top:80px; 
+    border-top: 1px solid #036fab; 
+    padding-top:20px
+}
+.infoContacto {
+    grid-column: 4/6; 
+    grid-row: 6/7;
+}
+.mapa {
+     border: 4px solid #036fab;
+}
+.footer {
+    background-color: #8a3022;
+    padding: 10px 0;
+    margin-top: 100px;
+}
+.footer__texto {
+    font-family: fantasy;
+    text-align: center;
+    color: white;
+    font: 40px;
+}
+.footer {
+    background-color: #8a3022;
+    padding: 10px 0;
+    margin-top: 100px;
+}
+.footer__texto {
+    font-family: fantasy;
+    text-align: center;
+    color: white;
+    font: 40px;
+}

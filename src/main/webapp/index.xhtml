@@ -5,10 +5,14 @@
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
         <title>Login TechnoCR</title>
+        <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="js/main.js" type="text/javascript"></script>
+        <link href="css/cssPrincipal.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body style="background-image: url()">
         <h:form id="LoginForm">
-            <b:navBar style="background: #8a3022;
+            <b:navBar class="navegador" style="background: #8a3022;
                       height: 100px; 
                       border-bottom: white; 
                       border-top: white; 
@@ -17,7 +21,7 @@
                       border-style: solid; "
                       fluid="true"
                       >
-                
+
                 <h1 style="position: absolute;
                     margin-top: 3.1%;
                     margin-bottom: 100%;
@@ -25,7 +29,7 @@
                     color: white;
                     font-family: fantasy">TechnoCR</h1>
 
-                    
+
                 <b:inputText style=" position: absolute;
                              left: 66%; 
                              width: 150px; 
@@ -65,6 +69,110 @@
                 </b:commandButton>
             </b:navBar>     
         </h:form>
+        <h2 class="comprar_titulo">¿Porqué comprar con nosotros?</h2>
+
+        <div class="bloques contenedor">
+            <div class="bloque">
+                <img class="bloque__imagen" src="imagenes/icono1.png" alt="porque comprar"/>
+                <h3 class="bloque__tituto">El Mejor Precio</h3>
+                <p>En TechnoCr tenemos el orgullo de decirles a nuestros clientes 
+                    que contamos con los mejores precios existentes en el mercado 
+                    en toda clase de dispositivos tecnológicos.</p>
+            </div>
+            <!--.bloque-->
+
+            <div class="bloque">
+                <img class="bloque__imagen" src="imagenes/icono4.png" alt="porque comprar"/>
+                <h3 class="bloque__tituto">Envío Gratis</h3>
+                <p>Al comprar en TechoCR podrás disponer de envío gratis para cualquier compra superior a 15000 colones a todo el país.</p>
+            </div>
+            <!--.bloque-->
+
+
+            <div class="bloque">
+                <img class="bloque__imagen" src="imagenes/icono2.png" alt="porque comprar"/>
+                <h3 class="bloque__tituto">La Mejor Calidad</h3>
+                <p>En technoCr nos preocupamos por la calidad y la satisfacción de nuestros clientes con productos confiables y originales.</p>
+            </div>
+            <!--.bloque-->
+        </div>
+        <div class="conenidoSobreUS contenedor" >
+
+            <main class="Nosotros" style="">
+                <h2 class="titulo titulo--Nosotros">Sobre Nosotros</h2>
+                <div class="sillaGamer">
+                    <img src="imagenes/silla2.png" alt="imagen"/>
+                </div>
+                <article class="entrada parrafo1">
+                    <!--Segun lo que dice html, como las entradas del blog o las noticias van dentro de un article-->
+
+                    <div class="entrada__contenido">
+                        <h4 class="subTitulo">Estamos Comprometidos</h4>
+                        <p>TechnoCr es una empresa de artículos tecnológicos de ultima generación para 
+                            gamers y cualquier persona interesada por las novedades tecnológicas de los 
+                            últimos días. Fundada en el año 2014 en San José la capital de Costa Rica 
+                            por un grupo de 5 estudiantes de la universidad Fidélitas, hoy en día con un 
+                            total de 10 sucursales repartidas en el territorio nacional.</p>
+                    </div>
+                    <div>
+                        <img class="headset" src="imagenes/headset.png" alt="imagen"/>
+                    </div>
+                </article>
+
+                <article class="entrada parrafo2">
+                    <!--Segun lo que dice html, como las entradas del blog o las noticias van dentro de un article-->
+
+                    <div class="entrada__contenido">
+                        <h4 class="subTitulo">La mejor opción</h4>
+                        <p>TechnoCr es la tienda más comprometida de Costa Rica en traer las últimas novedades.
+                            Es la tienda #1 en artículos electrónicos, con mejor servicio al cliente, con el 
+                            mejor envío a todo el país garantizando la entrega en menos de una semana, rápida y sin daño alguno.</p>
+                    </div>
+
+                </article>
+
+                <div class="campoTeclado">
+                    <img class="tecladoRazer" src="imagenes/teclado2.png" alt="imagen blog"/>
+                </div>
+                <div class="campoMouse">
+                    <img class="mouseRazer" src="imagenes/mouseRazer.png" alt="imagen"/>
+                </div>
+                <article class="entrada parrafo3">
+                    <!--Segun lo que dice html, como las entradas del blog o las noticias van dentro de un article-->
+                    <div class="entrada__contenido">
+                        <h4 class="subTitulo">Siempre innovando</h4>
+                        <p>Los fundadores de TechnoCr son reconocidos por su sed de innovar, mejorar y triunfar. 
+                            Antes de establecerse como una empresa sólida y preferida por la mayoría de costarricenses 
+                            en el área tecnología, surgió como una idea de un proyecto de programación web universitaria,
+                            en el cual la página TechnoCr dio sus primeros pasos, destacando su gran éxito. Grandes
+                            agradamientos hacia los programadores responsables: Andrey Espinoza, Noel López, Fabricio 
+                            Rojas, Andrés A y Steve Arce.</p>
+                    </div>
+                </article>
+                <h2 class="titulo titulo--Contacto">Contacto y Dirección TechnoCr</h2>  
+                <div style="grid-column: 1/4;">
+
+                    <iframe class="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7859.889337916327!2d-84.12861757642983!3d9.938561971573122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fb621cfe1607%3A0x931e8ef02f4c1738!2sZona%20Industrial%2C%20San%20Jos%C3%A9%20Province%2C%20San%20Jos%C3%A9!5e0!3m2!1sen!2scr!4v1619504980313!5m2!1sen!2scr" width="500" height="350" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="infoContacto">
+                    <div style="margin-top: 70px">
+
+                        <img style="height: 30px; width: auto; display: inline" src="imagenes/telephone.png" alt="imagen"/>
+                        <h2 style="display: inline; margin-bottom: 5px;font-size: 27px"><span style="color: blue">Telefono: </span>+506 4001 4950</h2>
+                    </div>
+                    <div style="margin-top: 100px">
+
+                        <img style="height: 30px; width: auto; display: inline; margin-top: 1s0px" src="imagenes/mail.png" alt="imagen"/>
+                        <h2 style="display: inline; margin-bottom: 5px; font-size: 27px;"><span style="color: blue">E-Mail: </span>info@TechonoCr.com</h2>
+                    </div>
+                </div>
+            </main>
+
+        </div>
+        <footer class="footer">
+            <p class="footer__texto">TechnoCR - Todos los derechos Reservados 2021.</p>
+        </footer>
+
     </h:body>
 </html>
 

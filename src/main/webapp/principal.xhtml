@@ -11,22 +11,25 @@
                     <b:container fluid="false"  style="width: 700px">
                         <b:panel title="USUARIO" look="danger" collapsible="false">
                             <b:row>
-                                <b:column medium-screen="4">
+                                <b:column medium-screen="3">
                                 </b:column>
                                 <b:column medium-screen="6">
-                                    <h2 align="left">Bienvenido de nuevo ${usuarioController.nombreUsuario}</h2>
+                                    <h2 align="left" style="text-align: center">Bienvenido de nuevo ${usuarioController.nombreUsuario}</h2>
                                 </b:column>
                             </b:row>
-                             <b:row>
-                                <b:column medium-screen="4">
+                            <b:row>
+                                <b:column medium-screen="3">
                                 </b:column>
                                 <b:column medium-screen="6">
-                                    <h4 align="left">Usted ha ingresado como: ${usuarioController.idRol}</h4>
+                                    <h4 align="left" style="text-align: center">Usted ha ingresado como: ${usuarioController.idRol}</h4>
                                 </b:column>
                             </b:row>
                         </b:panel>
                     </b:container>
                 </b:form>
+                <footer class="footer">
+                    <p class="footer__texto">TechnoCR - Todos los derechos Reservados 2021.</p>
+                </footer>
             </ui:define>
         </ui:composition>
     </body>

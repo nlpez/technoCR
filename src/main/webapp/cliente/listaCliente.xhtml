@@ -21,7 +21,14 @@
                                              class="commandButton__insertar"
                                              >
                             </b:commandButton>
-                           
+                            <b:button value="Gráfico De Géneros"
+                                      look="success"
+                                      href="#{request.contextPath}/faces/dashboard/graficoCliente.xhtml"
+                                      class="commandButton__insertar"
+                                      style="background-color: black"
+                                      >
+                            </b:button>
+
                             <b:dataTable value="#{clienteController.clientes}"
                                          var="cliente"
                                          excel="true"

@@ -201,3 +201,16 @@ form{ /*para que la tabla que contiene la lista se acomode*/
 
 /* Muestra/Oculta*/
 .mostrar {display:block;}
+
+.footer {
+    background-color: #8a3022;
+    padding: 10px 0;
+    margin-top: 200px;
+    width: auto;
+}
+.footer__texto {
+    font-family: fantasy;
+    text-align: center;
+    color: white;
+    font: 40px;
+}

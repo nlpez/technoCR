@@ -20,6 +20,7 @@ import javax.json.JsonObjectBuilder;
 import javax.json.JsonWriter;
 import model.Cliente;
 import model.Conexion;
+import model.GraficoGeneroCliente;
 
 /**
  *
@@ -33,6 +34,27 @@ public class ClienteGestion {
     private static final String SQL_GETCLIENTES = "SELECT * FROM cliente";
     private static final String SQL_GETCLIENTE = "SELECT * FROM cliente where clienteId=?";
     private static final String SQL_GETREPORTECLIENTE = "SELECT * FROM cliente where cedula=?";
+    private static final String SQL_GENDER = "select genero, count(*) from cliente group by genero";
+    
+     public static ArrayList<GraficoGeneroCliente> getGraficoGeneroCliente() {
+        ArrayList<GraficoGeneroCliente> list = new ArrayList<>();
+        try {
+            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_GENDER);
+            ResultSet rs = sentencia.executeQuery();
+            
+            while (rs != null && rs.next()) {
+                list.add(new GraficoGeneroCliente(
+                        rs.getString(1),
+                        rs.getInt(2)));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteGestion.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        return list;
+
+    }
 
     public static Cliente buscarCliente(String cedula) {
         Cliente cliente = null;
