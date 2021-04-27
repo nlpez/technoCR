@@ -10,12 +10,13 @@
 
             <ui:define name="content">
                 <b:form>
-                    <b:container rendered="#{usuarioController.idRol=='administrador' or usuarioController.idRol=='respaldo' }">
+                    <b:container fluid="false"  style="width: 700px" rendered="#{usuarioController.idRol=='administrador' or usuarioController.idRol=='respaldo' }">
                         <b:panel collapsible="false" title="Generar respaldo de Base de datos" look="primary">
                             <b:row>
                                 <b:column medium-screen="3">
                                     <b:commandButton value="Respaldar Base de datos" 
                                                      action="#{respaldoController.respaldo()}"
+                                                     
                                                      />
                                 </b:column>
                             </b:row>

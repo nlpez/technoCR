@@ -7,10 +7,10 @@
 
     <body>
 
-   <ui:composition template="./../resources/templates/plantilla.xhtml">
+        <ui:composition template="./../resources/templates/plantilla.xhtml">
 
             <ui:define name="content">
-   <b:form id="reporteInventarioForm">
+                <b:form id="reporteInventarioForm">
                     <b:container rendered="#{usuarioController.idRol=='servicio' or usuarioController.idRol=='administrador'}" fluid="true" style="width: 700px">
                         <b:panel title="Imprimir Informacion del Inventario" look="primary" collapsible="false">
                             <b:row>
@@ -66,25 +66,29 @@
                         </b:panel>
                     </b:container>
                 </b:form>
-            
+
                 <b:form>
-                    <b:container rendered="#{usuarioController.idRol=='servicio' or usuarioController.idRol=='administrador'}">
-                        <b:panel>
+                    <b:container rendered="#{usuarioController.idRol=='servicio' or usuarioController.idRol=='administrador'}" fluid="false"  style="width: 700px">
+                         <b:panel title="REPORTE DE INVENTARIO - Presione la opcion deseada" look="primary" collapsible="false">
                             <b:row>
-                                <b:column medium-screen="5">
-                                    <h:outputLabel value="Reporte de Inventarios en PDF"
-                                                   for="PDF"/>
-                                </b:column>
                                 <b:column medium-screen="4">
-                                    <b:commandButton look="success" value="Ver PDF"  action="#{reporteInventarioController.verPDFInventario()}"/>
-                                    <b:commandButton look="success" value="Descargar PDF"  action="#{reporteInventarioController.descargarPDFInventarios()}"/>
+
+                                </b:column>
+                                <b:column medium-screen="6">
+                                    <b:commandButton look="warning" value="Ver PDF"
+                                                     action="#{reporteInventarioController.verPDFInventario()}" style="margin-right: 40px"></b:commandButton>
+                                    <b:commandButton look = "info" value="Descargar PDF"
+                                                     action="#{reporteInventarioController.descargarPDFInventarios()}"></b:commandButton>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="pdf"/>
                                 </b:column>
                             </b:row>
                         </b:panel>
                     </b:container>
-                     <b:container rendered="#{usuarioController.idRol=='respaldo'}" fluid="false" style="width: 700px">
+                    <b:container rendered="#{usuarioController.idRol=='respaldo'}" fluid="false" style="width: 700px">
                         <b:panel title="La funcion de reportes no esta disponible para su usuario" look="primary" collapsible="false">
-                                      <h5 align="center">Contacte con su proveedor de servicio en caso de error</h5>
+                            <h5 align="center">Contacte con su proveedor de servicio en caso de error</h5>
                         </b:panel>
                     </b:container>
                 </b:form>

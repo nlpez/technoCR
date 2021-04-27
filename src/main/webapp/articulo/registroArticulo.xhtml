@@ -12,7 +12,7 @@
 
             <ui:define name="content">
                 <h:form id="editaArticuloForm" enctype="multipart/form-data">
-                    <b:container b:container rendered="#{usuarioController.idRol=='administrador' or usuarioController.idRol=='servicio'}" fluid="true">
+                    <b:container rendered="#{usuarioController.idRol=='administrador' or usuarioController.idRol=='servicio'}" fluid="true">
                         <b:panel title="Editar Articulo" look="info" collapsible="false">
                             <b:row tooltip="El ID del articulo no debe de estar registrado">
                                 <b:column medium-screen="2">
@@ -84,7 +84,7 @@
                                     <b:message for="codigoArticulo"/>
                                 </b:column>
                             </b:row>
-                            <b:row >
+                            <b:row>
                                 <b:column medium-screen="2">
                                     <h:outputLabel value="Precio" for="precio"/>
                                 </b:column>
@@ -97,6 +97,7 @@
                                 <b:column medium-screen="6" style-class="message">
                                     <b:message for="precio"/>
                                 </b:column>
+                                </b:row>
                                 <b:row>
                                     <div>
                                         <h:form enctype="multipart/form-data">

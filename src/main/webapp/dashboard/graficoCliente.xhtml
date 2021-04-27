@@ -24,15 +24,6 @@
 
             <ui:define name="content">
                 <div style="display: flex; justify-content: center;margin-right: 500px">
-                    <div class="campo">
-                        <b:button value="Regresar"
-                                  look="success"
-                                  href="#{request.contextPath}/faces/cliente/listaCliente.xhtml"
-                                  class="commandButton__insertar"
-                                  style="background-color: black; width: 200px;"
-                                  >
-                        </b:button>
-                    </div>
                     <h:panelGrid columns="2" columnClasses="left,right" style="width:100px; margin-left: 50px">
                         <p:chart type="bar" model="#{chartAnimatedView1.animatedModel2}" style="width:400px;" />
                     </h:panelGrid>
