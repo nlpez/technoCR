@@ -12,6 +12,7 @@ import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 import javax.json.JsonWriter;
 import model.Articulo;
+import model.BrandPrice;
 import model.Conexion;
 
 public class ArticuloGestion {
@@ -24,6 +25,27 @@ public class ArticuloGestion {
     private static final String SQL_GETARTICULOS2 = "SELECT * FROM articulo";
     private static final String SQL_GETARTICULO = "SELECT articuloid, marca, nombre, descripcion, codigoArticulo, precio FROM articulo where articuloid=?";
     private static final String SQL_GETARTICULOREPORTE = "SELECT articuloid, marca, nombre, descripcion, codigoArticulo, precio FROM articulo where codigoArticulo=?";
+    private static final String SQL_INFORGRAFICOS = "SELECT a.precio,a.marca,b.cantidadStock \n"
+            + "FROM articulo a, inventario b \n"
+            + "where a.`codigoArticulo` = b.`codigoArticulo` \n"
+            + "GROUP by precio,marca order by precio;";
+
+    public static ArrayList<BrandPrice> getBrandPrice() {
+        ArrayList<BrandPrice> list = new ArrayList<>();
+        try {
+            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_INFORGRAFICOS);
+            ResultSet rs = sentencia.executeQuery();
+            while (rs != null && rs.next()) {
+                list.add(new BrandPrice(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+            }
+
+        } catch (SQLException ex) {
+
+            Logger.getLogger(ArticuloGestion.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        return list;
+    }
 
     public static boolean insertArticulo(Articulo articulo) {
         try {
@@ -51,7 +73,6 @@ public class ArticuloGestion {
         try {
             PreparedStatement sentence = Conexion.getConexion().prepareStatement(SQL_UPDATEARTICULO2);
 
-            
             sentence.setString(1, articulo.getMarca());
             sentence.setString(2, articulo.getNombre());
             sentence.setString(3, articulo.getDescripcion());
