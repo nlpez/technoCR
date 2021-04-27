@@ -12,7 +12,7 @@
 
             <ui:define name="content">
                 <h:form id="editaArticuloForm" enctype="multipart/form-data">
-                    <b:container fluid="true">
+                    <b:container b:container rendered="#{usuarioController.idRol=='administrador' or usuarioController.idRol=='servicio'}" fluid="true">
                         <b:panel title="Editar Articulo" look="info" collapsible="false">
                             <b:row tooltip="El ID del articulo no debe de estar registrado">
                                 <b:column medium-screen="2">
@@ -97,38 +97,42 @@
                                 <b:column medium-screen="6" style-class="message">
                                     <b:message for="precio"/>
                                 </b:column>
-                            </b:row>
-                            <b:row>
-                                <div>
-                                    <h:form enctype="multipart/form-data">
-                                        <div class="form-input">
-                                            <h:inputFile value="#{articuloImagenController.uploadedFile}" onchange="showPreview(event);">
-                                                <f:ajax listener="#{articuloImagenController.upload()}"/>
-                                            </h:inputFile>
-                                            <div id="preview">
-                                                <img id="file-preview"/>
+                                <b:row>
+                                    <div>
+                                        <h:form enctype="multipart/form-data">
+                                            <div class="form-input">
+                                                <h:inputFile value="#{articuloImagenController.uploadedFile}" onchange="showPreview(event);">
+                                                    <f:ajax listener="#{articuloImagenController.upload()}"/>
+                                                </h:inputFile>
+                                                <div id="preview">
+                                                    <img id="file-preview"/>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </h:form>
-                                </div>
-                            </b:row>
-                            <b:row>
-                                <b:column medium-screen="2">
-                                    <h:outputLabel value="Insertar a la Base de Datos" for="sb"/>
-                                </b:column>
-                                <b:column medium-screen="4">
-                                    <b:commandButton look="success"
-                                                     id="sb"
-                                                     value="Insertar"
-                                                     type="button"
-                                                     action="#{articuloController.insertArticulo()}"
-                                                     >
-                                    </b:commandButton>
-                                </b:column>
-                                <b:column medium-screen="6">
-                                    <b:message for="sb"/>
-                                </b:column>
-                            </b:row>
+                                        </h:form>
+                                    </div>
+                                </b:row>
+                                <b:row>
+                                    <b:column medium-screen="2">
+                                        <h:outputLabel value="Insertar a la Base de Datos" for="sb"/>
+                                    </b:column>
+                                    <b:column medium-screen="4">
+                                        <b:commandButton look="success"
+                                                         id="sb"
+                                                         value="Insertar"
+                                                         type="button"
+                                                         action="#{articuloController.insertArticulo()}"
+                                                         >
+                                        </b:commandButton>
+                                    </b:column>
+                                    <b:column medium-screen="6">
+                                        <b:message for="sb"/>
+                                    </b:column>
+                                </b:row>
+                        </b:panel>
+                    </b:container>
+                    <b:container rendered="#{usuarioController.idRol=='respaldo'}" fluid="false" style="width: 700px">
+                        <b:panel title="La funcion no esta disponible para su usuario" look="primary" collapsible="false">
+                            <h5 align="center">Contacte con su proveedor de servicio en caso de error</h5>
                         </b:panel>
                     </b:container>
                 </h:form>
