@@ -6,12 +6,12 @@
 package controller;
 
 import gestion.ArticuloGestion;
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import model.Articulo;
 
 /**
@@ -33,6 +33,7 @@ public class ArticuloController extends Articulo implements Serializable {
     }
 
     public String insertArticulo() {
+        this.setImagen(ArticuloImagenController.fileContents); //Obtiene la imagen
         if (ArticuloGestion.insertArticulo(this)) {
             return "listaArticulo.xhtml";
         } else {
@@ -45,8 +46,9 @@ public class ArticuloController extends Articulo implements Serializable {
     }
 
     public String updateArticulo() {
+        this.setImagen(ArticuloImagenController.fileContents); //Obtiene la imagen
         if (ArticuloGestion.updateArticulo(this)) {
-            return "listaArticulo.xhtml";
+            return "carouselArticulo.xhtml";
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al actualizar el articulo");
@@ -58,7 +60,7 @@ public class ArticuloController extends Articulo implements Serializable {
 
     public String deleteArticulo() {
         if (ArticuloGestion.deleteArticulo(this)) {
-            return "listaArticulo.xhtml";
+            return "carouselArticulo.xhtml";
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al eliminar el articulo");
@@ -68,7 +70,7 @@ public class ArticuloController extends Articulo implements Serializable {
 
     }
 
-    public List<Articulo> getArticulos() {
+    public List getArticulos() {
         return ArticuloGestion.getArticulos();
     }
 
@@ -86,7 +88,7 @@ public class ArticuloController extends Articulo implements Serializable {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "El articulo seleccionado no existe");
             FacesContext.getCurrentInstance().addMessage("editaArticuloForm:ID", message);
-            return "listaArticulo.xhtml";
+            return "carouselArticulo.xhtml";
         }
 
     }

@@ -3,14 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
         <ui:composition template="./../resources/templates/plantilla.xhtml">
 
             <ui:define name="content">
-                <h:form id="editaArticuloForm">
+                <h:form id="editaArticuloForm" enctype="multipart/form-data">
                     <b:container fluid="true">
                         <b:panel title="Editar Articulo" look="info" collapsible="false">
                             <b:row tooltip="El ID del articulo no debe de estar registrado">
@@ -98,17 +99,35 @@
                                 </b:column>
                             </b:row>
                             <b:row>
-                                <b:column medium-screen="2"/>
-                                <b:column medium-screen="4">
-                                    <b:commandButton value="Insertar"
-                                                     look="info"
-                                                     class="commandButton__editar"
-                                                     action="#{articuloController.insertArticulo()}">
-                                    </b:commandButton>
-
+                                <div>
+                                    <h:form enctype="multipart/form-data">
+                                        <div class="form-input">
+                                            <h:inputFile value="#{articuloImagenController.uploadedFile}" onchange="showPreview(event);">
+                                                <f:ajax listener="#{articuloImagenController.upload()}"/>
+                                            </h:inputFile>
+                                            <div id="preview">
+                                                <img id="file-preview"/>
+                                            </div>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Insertar a la Base de Datos" for="sb"/>
                                 </b:column>
-
-
+                                <b:column medium-screen="4">
+                                    <b:commandButton look="success"
+                                                     id="sb"
+                                                     value="Insertar"
+                                                     type="button"
+                                                     action="#{articuloController.insertArticulo()}"
+                                                     >
+                                    </b:commandButton>
+                                </b:column>
+                                <b:column medium-screen="6">
+                                    <b:message for="sb"/>
+                                </b:column>
                             </b:row>
                         </b:panel>
                     </b:container>

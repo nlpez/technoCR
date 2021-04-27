@@ -157,7 +157,7 @@ form{ /*para que la tabla que contiene la lista se acomode*/
     position: relative; 
     background-color: #820f07; /*Para definir el color de fondo de los links del menu desplegable*/
     color: white;
-    
+
 }
 
 /* Links dentro del menu desplegable */
@@ -166,6 +166,34 @@ form{ /*para que la tabla que contiene la lista se acomode*/
     padding: 8px 32px;
     text-decoration: none;
     display: block;
+}
+
+/*Da formato al cuadro donde se hara el preview de la imagen*/
+.form-input {
+    width:250px;
+    padding:20px;
+    background:#fff;
+}
+.form-input input {
+    display:none;
+}
+
+.form-input img {
+    width:100%;
+    display:none;
+    margin-top:10px;
+}
+
+.carouselMarca{
+    font-family: calibri;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.carouseltxt{
+    font-family: calibri;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 /* Cambia contenido cuando se pasa sobre el dropMenu*/
