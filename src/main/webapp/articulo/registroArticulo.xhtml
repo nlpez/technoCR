@@ -128,6 +128,15 @@
                                         <b:message for="sb"/>
                                     </b:column>
                                 </b:row>
+                                <b:row>
+                                    <b:column medium-screen="4">
+                                        <b:button href="#{request.contextPath}/faces/articulo/carouselArticulo.xhtml" 
+                                                  value="Volver a la lista" 
+                                                  look="primary" 
+                                                  class="commandButton__editar"
+                                                  />
+                                    </b:column>
+                                </b:row>
                         </b:panel>
                     </b:container>
                     <b:container rendered="#{usuarioController.idRol=='respaldo'}" fluid="false" style="width: 700px">

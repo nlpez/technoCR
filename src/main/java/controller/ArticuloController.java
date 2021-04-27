@@ -35,7 +35,7 @@ public class ArticuloController extends Articulo implements Serializable {
     public String insertArticulo() {
         this.setImagen(ArticuloImagenController.fileContents); //Obtiene la imagen
         if (ArticuloGestion.insertArticulo(this)) {
-            return "listaArticulo.xhtml";
+            return "registroArticulo.xhtml";
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al insertar el articulo");
@@ -48,11 +48,11 @@ public class ArticuloController extends Articulo implements Serializable {
     public String updateArticulo() {
         this.setImagen(ArticuloImagenController.fileContents); //Obtiene la imagen
         if (ArticuloGestion.updateArticulo(this)) {
-            return "carouselArticulo.xhtml";
+            return "editaArticulo.xhtml";
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al actualizar el articulo");
-            FacesContext.getCurrentInstance().addMessage("editaArticuloForm:ID", message);
+            FacesContext.getCurrentInstance().addMessage("editaArticuloForm:articuloid", message);
             return "editaArticulo.xhtml";
         }
 
@@ -64,7 +64,7 @@ public class ArticuloController extends Articulo implements Serializable {
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al eliminar el articulo");
-            FacesContext.getCurrentInstance().addMessage("editaArticuloForm:ID", message);
+            FacesContext.getCurrentInstance().addMessage("editaArticuloForm:articuloid", message);
             return "editaArticulo.xhtml";
         }
 
@@ -87,7 +87,7 @@ public class ArticuloController extends Articulo implements Serializable {
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "El articulo seleccionado no existe");
-            FacesContext.getCurrentInstance().addMessage("editaArticuloForm:ID", message);
+            FacesContext.getCurrentInstance().addMessage("editaArticuloForm:articuloid", message);
             return "carouselArticulo.xhtml";
         }
 
@@ -112,17 +112,23 @@ public class ArticuloController extends Articulo implements Serializable {
             noImprimir = false;
         } else {
             
-            this.setCodigoArticulo("");
-            this.setNombre("");
-            this.setMarca("");
-            this.setDescripcion("");
-            this.setPrecio(0.0f);
+            clean();
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "El articulo  no fue existe");
             FacesContext.getCurrentInstance().addMessage("reporteArticuloForm:ID", message);
             noImprimir = true;
         }
-
     }
 
+    private void clean(){
+        this.setCodigoArticulo("");
+            this.setNombre("");
+            this.setMarca("");
+            this.setDescripcion("");
+            this.setArticuloid(0);
+            this.setPrecio(0.0f);
+            this.setCodigoArticulo("");
+            this.setImagen(null);
+    }
+    
 }

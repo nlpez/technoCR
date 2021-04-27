@@ -14,7 +14,7 @@
                 <h:form id="form">
                     <p:carousel value="#{articuloController.articulos}" var="articulo" autoPlayInterval="4000" effect="fade" circular="true" headerText="Productos Recientes" style="width: 100%">
                             <h:panelGrid columns="1" style="width: 100%" cellpadding="5">
-                                <p:graphicImage value="/image?id=#{articulo.articuloid}" width="250" height="200" cache="false"/>
+                                <p:graphicImage value="/image?id=#{articulo.articuloid}" width="300" height="250" cache="false"/>
 
                                 <h:outputText value="Marca: #{articulo.marca}" class="carouselMarca"/>
                                 <h:outputText value="Nombre: #{articulo.nombre}" class="carouseltxt"/>

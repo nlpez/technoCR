@@ -12,7 +12,7 @@
         <ui:composition template="./../resources/templates/plantilla.xhtml">
 
             <ui:define name="content">
-                <h:form id="editaArticuloForm">
+                <h:form id="editaArticuloForm" enctype="multipart/form-data">
                     <b:container rendered="#{usuarioController.idRol=='administrador' or usuarioController.idRol=='servicio'}" fluid="true">
                         <b:panel title="Editar Articulo" look="info" collapsible="false">
                             <b:row tooltip="El ID del articulo no es modificable">
@@ -26,7 +26,7 @@
                                                  />
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
-                                    <b:message for="ID"/>
+                                    <b:message for="articuloid"/>
                                 </b:column>
                             </b:row>
                             <b:row >
@@ -113,7 +113,7 @@
                                 </b:column>
                                 <b:column medium-screen="4" >
                                     <div>
-                                        <h:form enctype="multipart/form-data" id="newImage">
+                                        <h:form enctype="multipart/form-data">
                                             <div class="form-input">
                                                 <h:inputFile value="#{articuloImagenController.uploadedFile}" onchange="showPreview(event);">
                                                     <f:ajax listener="#{articuloImagenController.upload()}"/>
@@ -143,6 +143,15 @@
                                                      action="#{articuloController.deleteArticulo()}">
 
                                     </b:commandButton>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="4">
+                                    <b:button href="#{request.contextPath}/faces/articulo/carouselArticulo.xhtml" 
+                                              value="Volver a la lista" 
+                                              look="primary" 
+                                              class="commandButton__editar"
+                                              />
                                 </b:column>
                             </b:row>
                         </b:panel>
