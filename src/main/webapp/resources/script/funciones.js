@@ -13,18 +13,14 @@ function closeNav() {
     document.getElementById("sidenavBar").style.width = "0";
 }
 /*Funcion para hacer preview de las imagenes */
-function showPreview(event) {
-    var preview = document.getElementById("file-preview");
-    var src = URL.createObjectURL(event.target.files[0]);
+function showPreview(event) { //event es el evento que obtiene 
+    var preview = document.getElementById("file-preview"); //Donde se va a mostrar la imagen
+    var src = URL.createObjectURL(event.target.files[0]);// Se crea un objeto URL para poder mostrar la imagen
     if (event.target.files.length > 0) {
         preview.src = src;
         preview.style.display = "block";
     }
-    if (event.target.files.length <= 0) {
-        preview.style.display = "none";
-    }
 }
-
 /* Funcion para abrir y cerra el menu cuando se da click sobre los links <a> */
 function abrirDropMenu() {
     var emp = document.getElementById("gestProyectoE");

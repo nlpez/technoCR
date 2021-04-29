@@ -11,7 +11,9 @@
         <ui:composition template="./../resources/templates/plantilla.xhtml">
 
             <ui:define name="content">
-                <p:chart type="bubble" model="#{chartBubbleView2.bubbleModel2}" />                
+                <div>
+                    <p:chart type="bubble" model="#{chartBubbleView2.bubbleModel2}"  style="margin-top: 50px"/>
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>

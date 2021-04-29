@@ -6,13 +6,13 @@
 package dashboard;
 
 import gestion.ArticuloGestion;
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import model.BrandPrice;
 import org.primefaces.event.ItemSelectEvent;
 import org.primefaces.model.chart.Axis;
@@ -56,7 +56,7 @@ public class ChartBubbleView2 implements Serializable {
 
         }
 
-        bubbleModel2.setTitle("Ejemplo 2");
+        bubbleModel2.setTitle("Articulos");
         bubbleModel2.setShadow(false);
         bubbleModel2.setBubbleGradients(true);
         bubbleModel2.setBubbleAlpha(0.8);

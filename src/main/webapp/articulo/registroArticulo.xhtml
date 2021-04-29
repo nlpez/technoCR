@@ -121,7 +121,8 @@
                                                          id="sb"
                                                          value="Insertar"
                                                          type="button"
-                                                         action="#{articuloController.insertArticulo()}"
+                                                         onclick="ajax:articuloController.insertArticulo()"
+                                                         update="@form"
                                                          >
                                         </b:commandButton>
                                     </b:column>

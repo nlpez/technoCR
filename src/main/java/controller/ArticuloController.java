@@ -15,8 +15,6 @@ import javax.inject.Named;
 import model.Articulo;
 
 /**
- *
- * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 @Named(value = "articuloController")
 @SessionScoped
@@ -34,7 +32,7 @@ public class ArticuloController extends Articulo implements Serializable {
     public String insertArticulo() {
         this.setImagen(ArticuloImagenController.fileContents); //Obtiene la imagen
         if (ArticuloGestion.insertArticulo(this)) {
-            return "registroArticulo.xhtml";
+            return "carouselArticulo.xhtml";
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al insertar el articulo");
@@ -47,7 +45,7 @@ public class ArticuloController extends Articulo implements Serializable {
     public String updateArticulo() {
         this.setImagen(ArticuloImagenController.fileContents); //Obtiene la imagen
         if (ArticuloGestion.updateArticulo(this)) {
-            return "editaArticulo.xhtml";
+            return "carouselArticulo.xhtml";
         } else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "Ocurrio un error al actualizar el articulo");
