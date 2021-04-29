@@ -21,7 +21,6 @@ import model.Articulo;
 @Named(value = "articuloController")
 @SessionScoped
 public class ArticuloController extends Articulo implements Serializable {
-
     /**
      * Creates a new instance of ArticuloController
      */
@@ -108,10 +107,10 @@ public class ArticuloController extends Articulo implements Serializable {
             this.setNombre(articulo.getNombre());
             this.setDescripcion(articulo.getDescripcion());
             this.setPrecio(articulo.getPrecio());
-           
+
             noImprimir = false;
         } else {
-            
+
             clean();
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al Conectar",
                     "El articulo  no fue existe");
@@ -120,15 +119,15 @@ public class ArticuloController extends Articulo implements Serializable {
         }
     }
 
-    private void clean(){
+    private void clean() {
         this.setCodigoArticulo("");
-            this.setNombre("");
-            this.setMarca("");
-            this.setDescripcion("");
-            this.setArticuloid(0);
-            this.setPrecio(0.0f);
-            this.setCodigoArticulo("");
-            this.setImagen(null);
+        this.setNombre("");
+        this.setMarca("");
+        this.setDescripcion("");
+        this.setArticuloid(0);
+        this.setPrecio(0.0f);
+        this.setCodigoArticulo("");
+        this.setImagen(null);
     }
-    
+
 }

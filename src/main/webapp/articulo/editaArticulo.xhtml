@@ -34,7 +34,7 @@
                                     <h:outputLabel value="Marca" for="marca"/>
                                 </b:column>
                                 <b:column>
-                                    <b:inputText placeholder="Marca" id="Marca"
+                                    <b:inputText placeholder="Marca" id="marca"
                                                  value="#{articuloController.marca}"
 
                                                  />
@@ -113,7 +113,6 @@
                                 </b:column>
                                 <b:column medium-screen="4" >
                                     <div>
-                                        <h:form enctype="multipart/form-data">
                                             <div class="form-input">
                                                 <h:inputFile value="#{articuloImagenController.uploadedFile}" onchange="showPreview(event);">
                                                     <f:ajax listener="#{articuloImagenController.upload()}"/>
@@ -122,7 +121,6 @@
                                                     <img id="file-preview"/>
                                                 </div>
                                             </div>
-                                        </h:form>
                                     </div>
                                 </b:column>
                                 <b:column medium-screen="6" style-class="message">
@@ -135,7 +133,8 @@
                                     <b:commandButton value="Actualizar"
                                                      look="info"
                                                      class="commandButton__editar"
-                                                     action="#{articuloController.updateArticulo()}">
+                                                     action="#{articuloController.updateArticulo()}"
+                                                     >
                                     </b:commandButton>
                                     <b:commandButton value="Eliminar"
                                                      look="danger"
